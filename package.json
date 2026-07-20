@@ -1,0 +1,14 @@
+{
+  "name": "readtheroom-public-professional",
+  "version": "3.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Sterile deployment package for the ReadTheRoom Public Professional controlled beta.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/read-the-room/readtheroomPublicServer.mjs",
+    "test": "node --test tests/readtheroom-calibration-session.test.mjs tests/readtheroom-public-pro-v34-ui.test.mjs tests/readtheroom-public-standalone-server.test.mjs tests/readtheroom-public-release-config.test.mjs"
+  }
+}

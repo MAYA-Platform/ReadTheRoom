@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "suite_id": "readtheroom-public-pro-v3-4",
+  "release_gate": "ready_with_disclosed_limits",
+  "products": [
+    {
+      "id": "readtheroom-public-pro",
+      "display_name": "ReadTheRoom Public Professional v3.4",
+      "archive_root": "ReadTheRoom-Public-Professional-v3.4",
+      "allowlist": [
+        { "source": "read-the-room-public-pro/index.html", "destination": "read-the-room-public-pro/index.html" },
+        { "source": "read-the-room-public-pro/readtheroom-public-pro.css", "destination": "read-the-room-public-pro/readtheroom-public-pro.css" },
+        { "source": "read-the-room-public-pro/readtheroom-public-pro.js", "destination": "read-the-room-public-pro/readtheroom-public-pro.js" },
+        { "source": "read-the-room-public-pro/README.md", "destination": "read-the-room-public-pro/README.md" },
+        { "source": "read-the-room-public-pro/LICENSE.txt", "destination": "LICENSE.txt" },
+        { "source": "read-the-room-public-pro/assets/fonts/OFL-Inter.txt", "destination": "read-the-room-public-pro/assets/fonts/OFL-Inter.txt" },
+        { "source": "read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt", "destination": "read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt" },
+        { "source": "read-the-room-public-pro/assets/fonts/inter-latin-wght-normal.woff2", "destination": "read-the-room-public-pro/assets/fonts/inter-latin-wght-normal.woff2" },
+        { "source": "read-the-room-public-pro/assets/fonts/jetbrains-mono-latin-wght-normal.woff2", "destination": "read-the-room-public-pro/assets/fonts/jetbrains-mono-latin-wght-normal.woff2" },
+        { "source": "read-the-room-public-pro/package.runtime.json", "destination": "package.json" },
+        { "source": "scripts/read-the-room/readtheroomPublicServer.mjs", "destination": "scripts/read-the-room/readtheroomPublicServer.mjs" },
+        { "source": "scripts/read-the-room/readtheroomPolicy.js", "destination": "scripts/read-the-room/readtheroomPolicy.js" },
+        { "source": "scripts/read-the-room/readtheroomCalibrationSession.js", "destination": "scripts/read-the-room/readtheroomCalibrationSession.js" },
+        { "source": "tests/readtheroom-calibration-session.test.mjs", "destination": "tests/readtheroom-calibration-session.test.mjs" },
+        { "source": "tests/readtheroom-public-pro-v34-ui.test.mjs", "destination": "tests/readtheroom-public-pro-v34-ui.test.mjs" },
+        { "source": "tests/readtheroom-public-standalone-server.test.mjs", "destination": "tests/readtheroom-public-standalone-server.test.mjs" },
+        { "source": "tests/readtheroom-public-release-config.test.mjs", "destination": "tests/readtheroom-public-release-config.test.mjs" },
+        { "source": "docs/release/readtheroom-public-pro.release.json", "destination": "docs/release/readtheroom-public-pro.release.json" }
+      ],
+      "exclusions": [
+        "**/.env*",
+        "**/*secret*",
+        "**/*credential*",
+        "**/*key*.txt",
+        "**/agent-social-profile.json",
+        "**/data/**",
+        "**/state/**",
+        "**/node_modules/**"
+      ],
+      "verification_timeout_seconds": 180,
+      "verification_commands": [
+        ["node", "--check", "scripts/read-the-room/readtheroomPublicServer.mjs"],
+        ["node", "--check", "scripts/read-the-room/readtheroomPolicy.js"],
+        ["node", "--check", "scripts/read-the-room/readtheroomCalibrationSession.js"],
+        [
+          "node",
+          "--test",
+          "tests/readtheroom-calibration-session.test.mjs",
+          "tests/readtheroom-public-pro-v34-ui.test.mjs",
+          "tests/readtheroom-public-standalone-server.test.mjs",
+          "tests/readtheroom-public-release-config.test.mjs"
+        ]
+      ]
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "Sterile explicit-allowlist deployment package",
+      "finding_class": null,
+      "source_repository": "PASS",
+      "focused_package": "PASS",
+      "clean_extraction": "PASS",
+      "public_claim": "SUPPORTED",
+      "product_id": "readtheroom-public-pro",
+      "derive_package_states": true
+    },
+    {
+      "capability": "Dedicated public-only Node runtime",
+      "finding_class": null,
+      "source_repository": "PASS",
+      "focused_package": "PASS",
+      "clean_extraction": "PASS",
+      "public_claim": "SUPPORTED"
+    },
+    {
+      "capability": "Static/API allowlist and traversal denial",
+      "finding_class": null,
+      "source_repository": "PASS",
+      "focused_package": "PASS",
+      "clean_extraction": "PASS",
+      "public_claim": "SUPPORTED"
+    },
+    {
+      "capability": "Ephemeral bounded calibration sessions",
+      "finding_class": null,
+      "source_repository": "PASS",
+      "focused_package": "PASS",
+      "clean_extraction": "PASS",
+      "public_claim": "SUPPORTED"
+    },
+    {
+      "capability": "Real public HTTPS deployment",
+      "finding_class": "transitional_architecture",
+      "source_repository": "N/A",
+      "focused_package": "N/A",
+      "clean_extraction": "N/A",
+      "public_claim": "SUPPORTED_WITH_LIMITS",
+      "note": "The code and sterile package are verified locally; the actual public hostname must pass the production smoke before announcement."
+    }
+  ]
+}

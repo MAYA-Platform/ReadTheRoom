@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Teach your AI to read the room with reviewable behavior calibration, action restraint, and local proof.">
+  <title>ReadTheRoom — Context Before Response</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/read-the-room-public-pro/readtheroom-public-pro.css">
+  <script defer src="/read-the-room-public-pro/readtheroom-public-pro.js"></script>
+</head>
+<body class="rtr-public-pro-body">
+  <section aria-label="ReadTheRoom public professional" class="rtr-public-pro" data-public-pro-version="3.4-final" data-calibration-mode="quick" data-proof-view="calibrated" id="rtr-2b-preview-lab">
+<div class="rtr-tight-wrap">
+<div class="rtr-tight-top rtr-topbar" data-arrange-id="top-nav">
+<div class="rtr-tight-brand">
+<div aria-label="MAYA profile mark" class="rtr-tight-sigil"><span>M</span></div>
+<div><b>ReadTheRoom</b><span>Context before response · private by default</span></div>
+</div>
+<nav aria-label="ReadTheRoom page navigation" class="rtr-tight-links"><a href="#tutorialPanel">How it works</a><a href="#liveCalibrationCockpit">Live demo</a><a href="#publicProofPanel">Proof</a><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-link-button" id="technicalProofBtn" type="button">Technical</button><button class="rtr-nav-button rtr-action rtr-action--nav" id="navStartBtn" type="button">Try it</button></nav>
+</div>
+<section aria-labelledby="rtrPublicHeadline" class="rtr-tight-hero rtr-hero" data-arrange-id="hero-section">
+<div>
+<div class="rtr-tight-kicker">Public beta preview · context before response</div>
+<h1 id="rtrPublicHeadline">Teach your AI to read <em>the room.</em></h1>
+<p class="rtr-tight-lead"><strong>ReadTheRoom calibrates tone, brevity, correction handling, and tool restraint before an agent responds.</strong> Test one real prompt, compare the generic and calibrated answers, and review exactly what would change before anything is saved or acted on.</p><div aria-label="Choose calibration depth" class="rtr-mode-switch-wrap">
+<div aria-label="Calibration mode" class="rtr-mode-switch" role="tablist">
+<button aria-selected="true" class="is-active rtr-toggle__option rtr-option-card" id="quickProofModeBtn" role="tab" type="button">
+<span>Quick proof</span><small>About 60 seconds</small>
+</button>
+<button aria-selected="false" class="rtr-toggle__option rtr-option-card" id="fullCalibrationModeBtn" role="tab" type="button">
+<span>Full calibration</span><small>About 15 minutes</small>
+</button>
+</div>
+<p class="rtr-mode-note" id="calibrationModeNote">One prompt, one preference, one visible before/after. Nothing is saved without review.</p>
+</div>
+<div class="rtr-tight-actions"><button class="rtr-tight-btn rtr-primary-action rtr-action rtr-action--primary" data-magnetic="true" id="startCalibrationBtn" type="button">Run the 60-second proof</button><button class="rtr-tight-btn secondary rtr-action rtr-action--secondary" id="seeProofBtn" type="button">See the behavior change</button><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-btn secondary rtr-technical-link rtr-text-action rtr-action rtr-action--quiet" id="technicalInlineBtn" type="button">Technical details</button></div>
+<div aria-label="ReadTheRoom live status strip" class="rtr-tight-status rtr-status-inline">
+<span><strong>Private beta session</strong> Processed only for this session, not retained to disk</span>
+<span><strong>Review before learning</strong> Nothing becomes behavior silently</span>
+<span><strong>Action stays gated</strong> Tools remain held until the user asks</span>
+</div>
+</div>
+<aside aria-label="ReadTheRoom example behavior proof" class="rtr-tight-side rtr-public-proof-stage" data-arrange-id="hero-proof">
+<div class="rtr-proof-stage-head">
+<div>
+<div class="rtr-public-proof-kicker">Interactive behavior proof</div>
+<h2>Same prompt. Different judgment.</h2>
+</div>
+<div aria-label="Compare generic and calibrated responses" class="rtr-proof-toggle" role="tablist">
+<button aria-selected="false" class="rtr-toggle__option" id="proofDefaultViewBtn" role="tab" type="button">Default AI</button>
+<button aria-selected="true" class="is-active rtr-toggle__option" id="proofCalibratedViewBtn" role="tab" type="button">ReadTheRoom</button>
+</div>
+</div>
+<div aria-label="Interactive response comparison" class="rtr-response-lens" data-view="calibrated" id="responseContextLens" tabindex="0">
+<div aria-hidden="true" class="rtr-lens-glow"></div>
+<div class="rtr-response-view is-default" data-proof-panel="default">
+<small>Generic response</small>
+<p id="heroGenericResponse">“I understand this is frustrating. Let’s go through the issue step by step.”</p>
+</div>
+<div class="rtr-response-view is-calibrated" data-proof-panel="calibrated">
+<small>ReadTheRoom calibrated</small>
+<p id="heroCalibratedResponse">“Yeah, frustrating. Let’s stop the loop, find the failing step, and make the smallest verified fix.”</p>
+</div>
+<div class="rtr-lens-caption">
+<span class="rtr-lens-dot"></span>
+    Move across the response to inspect the context lens
+  </div>
+</div>
+<div class="rtr-why-grid">
+<div class="rtr-why-changed">
+<span>Why it changed</span>
+<ul>
+<li>Acknowledges frustration without over-apologizing</li>
+<li>Moves to one concrete next step</li>
+<li>Preserves the user’s “do not take over” boundary</li>
+</ul>
+</div>
+<div class="rtr-action-boundary">
+<span>Action boundary</span>
+<strong><i></i>No tool action requested</strong>
+<p>Nothing was sent, changed, saved, or executed.</p>
+</div>
+</div>
+<div class="rtr-public-proof-footer">
+<div><span>Behavior match</span><strong>42 → 74</strong></div>
+<div><span>Tool action</span><strong>Held</strong></div>
+<div><span>Profile write</span><strong>Review first</strong></div>
+</div>
+</aside>
+</section>
+<section aria-label="How ReadTheRoom works tutorial" class="rtr-tutorial-panel" data-arrange-id="tutorial-panel" id="tutorialPanel">
+<div class="rtr-tutorial-head">
+<div><span class="rtr-tight-tag">How it works</span><h2>One prompt. Four choices. A visible before-and-after.</h2><p>No prompt-engineering lesson and no hidden personality rewrite. ReadTheRoom asks plain-language questions, previews the result, and keeps saving behind explicit review.</p></div>
+<button class="rtr-tight-btn secondary rtr-tutorial-action rtr-action rtr-action--secondary" id="startTutorialBtn" type="button">Start guided demo</button>
+</div>
+<div class="rtr-tutorial-grid">
+<div class="rtr-tutorial-step"><small>01</small><b>Speak once, type, or edit the sample.</b><span>MAYA offers a starting prompt, but users can replace it with their real messy prompt. The box grows like a chat composer.</span></div>
+<div class="rtr-tutorial-step"><small>02</small><b>MAYA asks calibration questions.</b><span>She asks what tone, boundary, and memory behavior the user wants before changing anything.</span></div>
+<div class="rtr-tutorial-step"><small>03</small><b>Pick simple options.</b><span>Options adjust response style, tool gates, and whether learning is temporary or reviewed for saving.</span></div>
+<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, behavior match lift, and an exportable local receipt.</span></div>
+</div>
+</section>
+<div aria-label="Live ReadTheRoom calibration cockpit" class="rtr-proof-layout rtr-live-cockpit" id="liveCalibrationCockpit">
+<div class="rtr-cockpit-left">
+<section aria-label="Start the ReadTheRoom calibration test" class="rtr-intake-card" data-arrange-id="start-input-card" id="intakePanel">
+<div class="rtr-intake-head">
+<div><span class="rtr-tight-tag">Start here · live input</span><h2>Start with one real prompt.</h2><p>Use a situation where an AI answer usually misses the tone, becomes too wordy, or takes over. This single input drives the live comparison beside it.</p></div>
+<span class="rtr-intake-mode">Shared input</span>
+</div>
+<div class="rtr-input-shell">
+<textarea aria-label="Editable calibration prompt for ReadTheRoom" id="rtrPromptInput" spellcheck="true">I’m frustrated this keeps breaking. Help me fix it without taking over.</textarea>
+<div class="rtr-input-actions"><button class="rtr-mini-action voice rtr-action rtr-action--secondary" id="voicePromptBtn" type="button">Speak</button><button class="rtr-mini-action rtr-action rtr-action--secondary" id="samplePromptBtn" type="button">Use example</button><button class="rtr-mini-action rtr-action rtr-action--primary rtr-action--section" data-magnetic="true" id="analyzePromptBtn" type="button">Run quick proof</button></div>
+<div class="rtr-voice-privacy-note"><strong>Voice privacy</strong> Voice recognition is handled by your browser and may use its online speech service. ReadTheRoom receives only the resulting text and keeps it in ephemeral session memory.</div>
+</div>
+<div class="rtr-intake-status" id="intakeStatus">Ready. This input drives the timer, scale, Default response, and ReadTheRoom response in the live panel beside it.</div>
+<div class="rtr-session-status" id="sessionStatus">Session: ReadTheRoom backend standing by · profile writes require review.</div>
+<div aria-label="ReadTheRoom calibration flow" class="rtr-inline-flow">
+<div class="rtr-flow-step done"><small>01</small><b>Prompt</b></div>
+<div class="rtr-flow-step"><small>02</small><b>Intent</b></div>
+<div class="rtr-flow-step"><small>03</small><b>Profile</b></div>
+<div class="rtr-flow-step"><small>04</small><b>Tool gate</b></div>
+<div class="rtr-flow-step"><small>05</small><b>Response</b></div>
+<div class="rtr-flow-step"><small>06</small><b>Receipt</b></div>
+</div>
+<div class="rtr-live-rail-head">
+<span>Live calibration</span>
+<b>Session signals</b>
+<p>Behavior lift, learned signals, and save boundaries stay visible while the sprint moves.</p>
+</div>
+<div aria-label="Real-time calibration scale and improvement tracker" class="rtr-live-tracker" data-arrange-id="live-tracker" id="liveCalibrationTracker">
+<div class="rtr-live-meter"><small>Behavior Match</small><b id="liveBehaviorMatchText">45 → 45</b><span class="rtr-live-meter-bar"><i id="liveBehaviorMatchBar"></i></span></div>
+<div class="rtr-live-improvement"><small>Improvement tracker</small><b id="liveImprovementText">0 reps captured</b><span id="liveImprovementDetail">Send a prompt from Start Here to create the first measured before/after.</span></div>
+<div class="rtr-live-improvement"><small>Profile write</small><b>Review first</b><span>Learning remains temporary until the user accepts the receipt.</span></div>
+</div>
+</section>
+</div>
+<section aria-label="15-minute calibration timeline" class="rtr-tight-panel rtr-tight-calibration" data-arrange-id="live-calibration-rail" id="calibrationTimeline">
+
+<div class="rtr-quick-proof-banner" id="quickProofBanner">
+<div><span>Quick proof</span><strong>One prompt → one calibration choice → visible result</strong></div>
+<button class="rtr-action rtr-action--secondary" id="switchToFullFromPanelBtn" type="button">Open full 15-minute calibration</button>
+</div>
+<div class="rtr-panel-head">
+<div class="rtr-panel-head-copy"><span class="rtr-tight-tag" id="calibrationModeTag">Quick proof · one-prompt mode</span><h2>Calibrate the response—not the user.</h2><div aria-live="polite" class="now" id="calibrationTimerText">0:00 / 15:00 · Intent lane ready.</div></div>
+</div>
+<div aria-label="15-minute calibration timer" aria-valuemax="900" aria-valuemin="0" aria-valuenow="0" class="rtr-tight-range" id="calibrationTimerRange" role="progressbar"><i></i></div>
+<div class="rtr-tight-steps" id="calibrationTimerSteps">
+<div class="rtr-tight-step active" data-minute="0"><small>0:00</small><b>Baseline</b></div>
+<div class="rtr-tight-step" data-minute="3"><small>3:00</small><b>Intent</b></div>
+<div class="rtr-tight-step" data-minute="6"><small>6:00</small><b>Tone</b></div>
+<div class="rtr-tight-step" data-minute="9"><small>9:00</small><b>Correction</b></div>
+<div class="rtr-tight-step" data-minute="12"><small>12:00</small><b>Tool Gate</b></div>
+<div class="rtr-tight-step" data-minute="15"><small>15:00</small><b>Export</b></div>
+</div>
+<div aria-label="Interactive ReadTheRoom calibration sprint" class="rtr-sprint-workbench" data-arrange-id="sprint-workbench" id="calibrationSprintWorkbench">
+<div class="rtr-sprint-head">
+<div><span class="rtr-tight-tag">Interactive sprint</span><h3 id="sprintLaneTitle">Intent · 3-minute lane</h3><p id="sprintLaneGuide">MAYA starts with intent: what should the agent understand before answering? Use the sample, type your own, or speak one.</p></div>
+<div class="rtr-sprint-clock" id="sprintLaneClock">Lane time: 3:00 · reps 0</div>
+</div>
+<div aria-label="Calibration timer controls" class="rtr-sprint-controls"><button class="rtr-action rtr-action--secondary" id="calibrationPauseBtn" type="button">Pause section</button><button class="rtr-action rtr-action--secondary" id="calibrationResumeBtn" type="button">Resume</button><button class="rtr-action rtr-action--quiet" id="calibrationSkipBtn" type="button">Skip to next section</button></div>
+<div aria-label="Prompt currently driving the live calibration" class="rtr-sprint-active-prompt">
+<small>Active prompt from Start Here</small>
+<b id="sprintPromptEcho">I’m frustrated this keeps breaking. Help me fix it without taking over.</b>
+<textarea aria-label="Hidden synchronized calibration prompt" class="rtr-sprint-hidden-sync" hidden="" id="rtrSprintPromptInput" spellcheck="true">I’m frustrated this keeps breaking. Help me fix it without taking over.</textarea>
+<div class="rtr-sprint-actions rtr-sprint-actions-hidden" hidden=""><button id="sprintUseSampleBtn" type="button">Use MAYA sample</button><button class="primary rtr-action rtr-action--primary rtr-action--section" id="sprintSendBtn" type="button">Send calibration rep</button></div>
+<span class="rtr-spinner" hidden="" id="sprintSpinner">Calculating</span>
+</div>
+<div aria-label="Default versus ReadTheRoom calibration result" class="rtr-sprint-compare">
+<div class="rtr-sprint-output"><small>Default response</small><b id="sprintGenericOutput">Send a prompt to see the generic baseline.</b></div>
+<div class="rtr-sprint-output calibrated"><small>ReadTheRoom calibrated</small><b id="sprintCalibratedOutput">MAYA will tune this after each rep and show the score movement.</b></div>
+</div>
+<div class="rtr-live-explainer" id="liveExplainer">
+<div>
+<span>Why MAYA changed it</span>
+<ul id="liveWhyChangedList">
+<li>Waiting for the first calibration result.</li>
+</ul>
+</div>
+<div class="rtr-live-action-status">
+<span>Action status</span>
+<strong><i></i>Held</strong>
+<p id="liveActionStatusText">No tool action has been requested.</p>
+</div>
+</div>
+
+<div class="rtr-sprint-feedback" id="sprintFeedbackText">MAYA is ready. Start the timer, send one rep, and the comparison appears here.</div>
+</div>
+<div aria-label="MAYA guided calibration walkthrough" class="rtr-maya-guide" data-arrange-id="maya-guide-panel" id="mayaGuidePanel">
+<div class="rtr-maya-guide-head">
+<div><span class="rtr-tight-tag">MAYA-guided calibration</span><h3>MAYA guides the sprint, then asks tuning choices.</h3><p>Send reps in the timed lane above. If the user wants faster tuning, MAYA also offers plain-English behavior choices below. Profile writes stay review-only.</p></div>
+<span class="rtr-maya-progress" id="mayaQuestionProgress">Question 1 / 4</span>
+</div>
+<div class="rtr-maya-dialogue">
+<div class="rtr-maya-bubble">
+<small>MAYA asks</small>
+<h4 id="mayaQuestionText">When a user sounds frustrated, how should I respond?</h4>
+<p id="mayaQuestionHint">Choose the behavior that should shape the calibrated answer.</p>
+<div class="rtr-maya-options" id="mayaOptionList"></div>
+</div>
+</div>
+<div class="rtr-maya-result">
+<div class="rtr-maya-score"><small>Behavior Match</small><b id="mayaScoreText">45 → 45</b><span class="rtr-tight-mini-bar"><i id="mayaScoreBar"></i></span><em class="rtr-score-scale-note">Earned curve: 70+ unlocks only after reviewed calibration choices.</em></div>
+<div class="rtr-maya-changes"><small>What MAYA changed</small><ul id="mayaChangeList"><li>Waiting for your first calibration choice.</li></ul><div class="rtr-maya-complete-actions" hidden="" id="mayaCompleteActions"><button class="rtr-action rtr-action--primary rtr-action--section" id="mayaApplyProofBtn" type="button">Show final proof</button><button class="rtr-action rtr-action--secondary" id="mayaRestartBtn" type="button">Restart walkthrough</button></div></div>
+</div>
+</div>
+</section>
+</div>
+<section aria-label="ReadTheRoom public proof stack" class="rtr-tight-panel rtr-launch-card rtr-after-cockpit-proof" data-arrange-id="public-proof-panel" id="publicProofPanel">
+<span class="rtr-launch-label">Public proof · simple mode</span>
+<h2>See the difference before you save anything.</h2>
+<p>ReadTheRoom keeps the original prompt, the generic response, the calibrated response, and the action boundary together so the improvement is inspectable—not implied.</p>
+<div aria-label="ReadTheRoom simple proof flow" class="rtr-proof-flow">
+<div class="rtr-proof-flow-card"><small>User prompt</small><b id="proofPromptText">I’m frustrated this keeps breaking. Help me fix it without taking over.</b></div>
+<div class="rtr-proof-arrow">→</div>
+<div class="rtr-proof-flow-card"><small>Generic agent</small><b id="proofGenericText">“I understand this is frustrating. Let’s go through the issue step by step and see what is causing it.”</b></div>
+<div class="rtr-proof-arrow">→</div>
+<div class="rtr-proof-flow-card"><small>ReadTheRoom</small><b id="proofCalibratedText">“Yeah, frustrating. We stop the loop, find the failing step, and make the smallest verified fix.”</b></div>
+</div>
+<div aria-label="ReadTheRoom proof metrics" class="rtr-proof-metrics">
+<div class="rtr-proof-item good"><small>Behavior Match</small><b id="proofBehaviorMatchText">42 → 74</b></div>
+<div class="rtr-proof-item good"><small>Tool Boundary</small><b>Held</b></div>
+<div class="rtr-proof-item"><small>Profile Writes</small><b>Review first</b></div>
+</div>
+<div aria-label="Compact ReadTheRoom receipt preview" class="rtr-receipt-preview">
+<div><small>Intent</small><b>Frustration loop</b></div>
+<div><small>Action gate</small><b>No tool action</b></div>
+<div><small>Save state</small><b>Review required</b></div>
+<div><small>Export</small><b>Receipt ready</b></div>
+</div>
+<ul class="rtr-proof-list">
+<li><i>✓</i><span>Baseline is measured before the agent improves.</span></li>
+<li><i>✓</i><span>Intent, tone, correction, and tool gate stay visible in plain English.</span></li>
+<li><i>✓</i><span>Sandbox experiments remain temporary unless the user saves them.</span></li>
+<li><i>✓</i><span>Profile, receipt, ledger, and report remain local/exportable.</span></li>
+</ul>
+<div class="rtr-launch-actions rtr-proof-actions"><button class="repo rtr-action rtr-action--secondary" id="focusExampleBtn" type="button">Replay example proof</button><button class="report rtr-action rtr-action--secondary" id="downloadSampleReceiptBtn" type="button">Download sample receipt</button></div>
+</section>
+<div class="rtr-understand-grid" data-arrange-id="proof-summary-grid" id="rtr2b-previews">
+<article class="rtr-tight-card active" data-arrange-id="summary-what-changes" data-key="studio" data-preview=""><span class="rtr-tight-tag">What changes</span><h3>Generic in. Calibrated out. Receipt beside it.</h3><p>This is the core story: ReadTheRoom reads the moment, adjusts the response, and keeps action boundaries visible.</p><div class="rtr-tight-proof"><div class="rtr-tight-copy"><small>Generic agent</small><b>“Sure, I’ll rewrite the whole thing and take care of it.”</b></div><div class="rtr-tight-arrow">→</div><div class="rtr-tight-copy calibrated"><small>ReadTheRoom</small><b>“Got it. I’ll keep the wording mostly intact and only tighten what is confusing.”</b></div></div><div class="rtr-signal-summary"><div class="rtr-signal-row success"><b>Intent</b><span>Matched</span></div><div class="rtr-signal-row success"><b>Tool Gate</b><span>Held</span></div></div></article>
+<article class="rtr-tight-card rtr-tight-sandbox" data-arrange-id="summary-sandbox" data-key="sandbox" data-preview=""><span class="rtr-tight-tag">Sandbox mode</span><h3>Temporary behavior tests. Real profile untouched.</h3><p>Users can test tone, humor, and warmth without saving anything to the persistent profile unless they explicitly review and save it.</p><div class="rtr-tight-toggle"><div><b>Sandbox preview is ON</b><p>Temporary only. The answer can be tested without saving to the profile.</p></div><span aria-label="Sandbox preview only, no profile write" class="rtr-sandbox-state">Preview only</span></div><div class="rtr-signal-summary"><div class="rtr-signal-row success"><b>Profile</b><span>Untouched</span></div><div class="rtr-signal-row review"><b>Save</b><span>Review required</span></div></div><p class="rtr-tight-note">Sensitive prompts still override sandbox settings.</p></article>
+<article class="rtr-tight-card" data-arrange-id="summary-local-receipt" data-key="minimal" data-preview=""><span class="rtr-tight-tag">Local receipt</span><h3>What changed, why it changed, and what stayed local.</h3><p>The proof should feel like a receipt, not a settings page. Clear outcome first, technical details second.</p><div aria-label="ReadTheRoom receipt metrics" class="rtr-proof-metrics compact"><div class="rtr-proof-item good"><small>Match</small><b>74</b></div><div class="rtr-proof-item good"><small>Gate</small><b>Held</b></div><div class="rtr-proof-item"><small>Writes</small><b>Review</b></div></div><ul class="rtr-proof-list compact-list"><li><i>✓</i><span>Generic response stayed visible for comparison.</span></li><li><i>✓</i><span>Profile write required review.</span></li><li><i>✓</i><span>Receipt can export locally.</span></li></ul></article>
+</div>
+<section aria-label="ReadTheRoom technical proof details" class="rtr-technical-proof" data-arrange-id="technical-proof-panel" hidden="" id="technicalProofPanel">
+<div class="rtr-tech-head"><div class="rtr-tech-head-copy"><span class="rtr-tight-tag">Technical proof · developer trace</span><h2>Runtime telemetry, not vibes.</h2><p>Technical mode exposes actual runtime functions: lane and priority, context economy, profile resolver, tool-suggestion policy, response-quality flags, and the public-safe receipt shape.</p></div><button aria-controls="technicalProofPanel" aria-expanded="true" class="rtr-tech-collapse rtr-action rtr-action--quiet" id="technicalCollapseBtn" type="button">Collapse technical proof ↑</button></div>
+<div class="rtr-tech-layout">
+<div class="rtr-tech-signal-map"><span class="rtr-tight-tag">Runtime trace · sample</span><h3>Prompt → classifier → profile resolver → tool gate → shaped answer</h3><p>This is the developer-facing proof layer. The public flow stays readable, but opening technical proof shows the actual control points a runtime engineer cares about.</p><div aria-label="ReadTheRoom technical trace stats" class="rtr-tech-stat-grid"><div class="rtr-tech-stat"><small>Lane / priority</small><b>frustration</b><span><code>priority=5</code></span></div><div class="rtr-tech-stat"><small>Quality flags</small><b>generic → clean</b><span>formulaic terms removed</span></div><div class="rtr-tech-stat"><small>Tool policy</small><b>suppressed</b><span>No explicit action trigger</span></div><div class="rtr-tech-stat"><small>Profile write</small><b>false</b><span>review_required</span></div></div><div class="rtr-tech-pipeline"><div class="rtr-tech-node"><small>01 Capture</small><b>Input envelope created</b><span>Voice path or locked sample becomes a normalized prompt payload.</span><code>input.mode=<em>locked_sample</em></code></div><div class="rtr-tech-node"><small>02 Classifier</small><b>Lane + priority resolved</b><span>Frustration, correction, sensitive mode, public/private, execution, or lightweight turn.</span><code>priority=<em>5</em> · classifyReadTheRoomLane()</code></div><div class="rtr-tech-node"><small>03 Profile resolver</small><b>Public-safe fit selected</b><span>Neutral default stays active until a reviewed profile or mirror is accepted.</span><code>hiddenDefault=<em>false</em></code></div><div class="rtr-tech-node"><small>04 Context economy</small><b>Reply budget checked</b><span>Context economy check keeps short prompts from pulling oversized answers.</span><code>analyzeContextEconomySignals() · bloat=<em>within_budget</em></code></div><div class="rtr-tech-node"><small>05 Tool gate</small><b>Action boundary enforced</b><span>Read-only, write, external, financial, destructive, and ambiguous actions are separated before tools run.</span><code>toolSuggestion.label=<em>suppressed</em></code></div><div class="rtr-tech-node"><small>06 Composer</small><b>Answer + receipt emitted</b><span>The response changes, the receipt records why, and public output strips private runtime paths.</span><code>textChanged=<em>true</em></code></div></div><div class="rtr-tech-detail-grid"><div class="rtr-tech-card"><small>Runtime hook</small><b>Single integration choke point</b><span><code>createMayaAgentRuntime({ readTheRoomRuntime })</code> applies shaping before memory extraction and envelope return.</span></div><div class="rtr-tech-card"><small>API surface</small><b>Review-gated calibration session</b><span><code>/api/maya-agent/readtheroom/calibration-session</code> stores progress by session id, not silent profile writes.</span></div><div class="rtr-tech-card"><small>Leak guard</small><b>Public receipt sanitizer</b><span>Public routes strip local paths, private profile names, raw debug directories, and hidden defaults.</span></div><div class="rtr-tech-card"><small>Circuit breaker</small><b>Fallback is explicit</b><span>If profile load or policy compose fails, receipt metadata marks <code>fallbackUsed=true</code> instead of pretending.</span></div></div></div>
+<pre aria-label="Sample ReadTheRoom developer trace" class="rtr-tech-code"><b>readtheroom_trace.sample.json</b>
+{
+  "runtime": "mayaReadTheRoomRuntime",
+  "policy": "readtheroomPolicy.js",
+  "route": "/api/maya-agent/readtheroom/calibration-session",
+  "input": { "mode": "locked_sample", "words": 9 },
+  "classifier": {
+    "lane": <em>"frustration_loop"</em>,
+    "priority": 5
+  },
+  "profile": {
+    "source": "public_default_profile",
+    "hiddenDefault": false,
+    "write": "review_required",
+    "saved": false
+  },
+  "contextEconomy": {
+    "inputWords": 9,
+    "outputWords": 17,
+    "bloatRatio": 1.9,
+    "bloat": <em>"within_budget"</em>
+  },
+  "toolSuggestion": {
+    "label": <em>"suppressed"</em>,
+    "enabled": false,
+    "reason": "frustration_loop does not imply tool execution"
+  },
+  "responseQuality": { "genericTags": ["overbroad_ladder"], "calibratedTags": [], "resistanceDelta": "+8" },
+  "publicReceipt": {
+    "textChanged": true,
+    "fallbackUsed": false,
+    "circuitBreaker": null,
+    "export": "readtheroom_receipt.json"
+  }
+}</pre>
+</div>
+</section>
+<footer aria-label="ReadTheRoom footer" class="rtr-tight-footer" data-arrange-id="footer-bar"><span>ReadTheRoom · Context Before Response</span><strong>Powered by 2ndNatureAi</strong><span>Voice-first behavior calibration · private by default</span></footer>
+</div>
+  </section>
+</body>
+</html>
