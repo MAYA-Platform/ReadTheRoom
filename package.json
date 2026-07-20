@@ -9,6 +9,6 @@
   },
   "scripts": {
     "start": "node scripts/read-the-room/readtheroomPublicServer.mjs",
-    "test": "node --test tests/readtheroom-calibration-session.test.mjs tests/readtheroom-public-pro-v34-ui.test.mjs tests/readtheroom-public-standalone-server.test.mjs tests/readtheroom-public-release-config.test.mjs"
+    "test": "node --test tests/public-vocabulary-boundary.test.mjs tests/readtheroom-calibration-session.test.mjs tests/readtheroom-public-pro-v34-ui.test.mjs tests/readtheroom-public-standalone-server.test.mjs tests/readtheroom-public-release-config.test.mjs"
   }
 }

@@ -149,7 +149,7 @@ function buildReceipt(session) {
     version: READTHEROOM_CALIBRATION_SESSION_VERSION,
     session_id: session.sessionId,
     generated_at: session.updatedAt,
-    source: 'api/maya-agent/readtheroom/calibration-session',
+    source: 'api/readtheroom/calibration-session',
     public_mode: true,
     input: {
       mode: session.baseline.inputMode,

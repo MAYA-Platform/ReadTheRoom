@@ -8,7 +8,7 @@ It does not claim:
 - identity verification
 - comprehensive safety or moderation
 - durable multi-device profile synchronization
-- access to private MAYA, ARC, staff, founder, or customer context
+- access to private company or customer context
 - autonomous tool permission
 
 The local server is intentionally bound to loopback. A future hosted deployment requires separate HTTPS, reverse-proxy, abuse-prevention, observability, privacy, and operational review.

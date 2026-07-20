@@ -37,12 +37,12 @@ const calibrationStore = createReadTheRoomCalibrationStore({
 
 const API_METHODS = new Map([
   ['/api/health', new Set(['GET'])],
-  ['/api/maya-agent/readtheroom/calibration-session', new Set(['GET', 'POST'])],
-  ['/api/maya-agent/readtheroom/profile', new Set(['GET'])],
-  ['/api/maya-agent/readtheroom/artifacts', new Set(['GET'])],
-  ['/api/maya-agent/readtheroom/archetypes', new Set(['GET', 'POST'])],
-  ['/api/maya-agent/readtheroom/apply', new Set(['POST'])],
-  ['/api/maya-agent/readtheroom/score-movement', new Set(['POST'])]
+  ['/api/readtheroom/calibration-session', new Set(['GET', 'POST'])],
+  ['/api/readtheroom/profile', new Set(['GET'])],
+  ['/api/readtheroom/artifacts', new Set(['GET'])],
+  ['/api/readtheroom/archetypes', new Set(['GET', 'POST'])],
+  ['/api/readtheroom/apply', new Set(['POST'])],
+  ['/api/readtheroom/score-movement', new Set(['POST'])]
 ]);
 const STATIC_PREFIXES = [
   '/read-the-room-public-pro/',
@@ -239,24 +239,24 @@ async function handleApi(req, res, url) {
   if (url.pathname === '/api/health') {
     return sendJson(res, 200, { ok: true, app: 'ReadTheRoom Public Professional', version: VERSION, persistence: 'ephemeral_memory' });
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/calibration-session') {
+  if (url.pathname === '/api/readtheroom/calibration-session') {
     return handleCalibration(req, res, url);
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/profile') {
+  if (url.pathname === '/api/readtheroom/profile') {
     return sendJson(res, 200, { ok: true, version: VERSION, publicMode: true, profile: publicProfile });
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/artifacts') {
+  if (url.pathname === '/api/readtheroom/artifacts') {
     const artifacts = sanitizeReadTheRoomArtifactsForPublic(buildReadTheRoomArtifacts(publicProfile));
     return sendJson(res, 200, { ok: true, version: VERSION, publicMode: true, artifacts: sanitizePublicValue(artifacts), logicArchetypeComparison: neutralArchetypes() });
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/archetypes') {
+  if (url.pathname === '/api/readtheroom/archetypes') {
     if (req.method === 'POST') {
       const parsed = await readJson(req);
       if (!parsed.ok) return sendJson(res, parsed.status, { ok: false, error: parsed.error, version: VERSION });
     }
     return sendJson(res, 200, neutralArchetypes());
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/score-movement') {
+  if (url.pathname === '/api/readtheroom/score-movement') {
     const parsed = await readJson(req);
     if (!parsed.ok) return sendJson(res, parsed.status, { ok: false, error: parsed.error, version: VERSION });
     const result = calculateReadTheRoomBehaviorMatchScore({
@@ -265,7 +265,7 @@ async function handleApi(req, res, url) {
     });
     return sendJson(res, 200, { ok: true, version: VERSION, publicMode: true, behaviorMatch: result });
   }
-  if (url.pathname === '/api/maya-agent/readtheroom/apply') {
+  if (url.pathname === '/api/readtheroom/apply') {
     const parsed = await readJson(req);
     if (!parsed.ok) return sendJson(res, parsed.status, { ok: false, error: parsed.error, version: VERSION });
     const message = String(parsed.payload.message || parsed.payload.context || '').slice(0, 6000);

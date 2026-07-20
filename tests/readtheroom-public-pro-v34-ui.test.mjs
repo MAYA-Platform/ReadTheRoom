@@ -16,8 +16,7 @@ const html = fs.readFileSync(htmlPath, "utf8");
 const css = fs.readFileSync(cssPath, "utf8");
 const js = fs.readFileSync(jsPath, "utf8");
 const standaloneServerPath = path.join(root, "scripts", "read-the-room", "readtheroomPublicServer.mjs");
-const legacyServerPath = path.join(root, "scripts", "maya-mvp-server.js");
-const serverPaths = [standaloneServerPath, legacyServerPath].filter((candidate) => fs.existsSync(candidate));
+const serverPaths = [standaloneServerPath].filter((candidate) => fs.existsSync(candidate));
 assert.ok(serverPaths.length > 0, "a public ReadTheRoom server implementation must exist");
 const server = serverPaths.map((candidate) => fs.readFileSync(candidate, "utf8")).join("\n");
 

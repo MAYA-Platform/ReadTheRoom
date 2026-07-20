@@ -36,7 +36,7 @@
       let calibrationLastTickAt = null;
       let calibrationTimerPaused = false;
       let sprintRepCount = 0;
-      const calibrationApi = '/api/maya-agent/readtheroom/calibration-session';
+      const calibrationApi = '/api/readtheroom/calibration-session';
       const sessionStorageKey = 'readtheroom-public-pro-v3-4-calibration-session-id';
       let mayaSession = null;
       const flowSteps = () => Array.from(document.querySelectorAll('.rtr-flow-step'));

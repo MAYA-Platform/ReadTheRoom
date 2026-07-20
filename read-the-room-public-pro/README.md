@@ -30,15 +30,7 @@ Optional environment variables:
 HOST=127.0.0.1 PORT=8877 npm start
 ```
 
-The standalone server is dependency-free and intentionally separate from `scripts/maya-mvp-server.js`. The default MAYA MVP server contains private and internal company surfaces and must never be exposed directly to the internet.
-
-A compatibility mode remains available inside the private repository for local integration testing:
-
-```bash
-MAYA_PUBLIC_READTHEROOM_ONLY=1 node scripts/maya-mvp-server.js
-```
-
-That compatibility path is not the preferred deployment artifact. Public deployments should use the sterile standalone package.
+The standalone server is dependency-free and isolated from non-public company systems. Public deployments should use this packaged runtime only.
 
 ## Runtime protections
 
@@ -76,34 +68,15 @@ Bind the Node process to loopback and place it behind a managed HTTPS reverse pr
 
 Do not announce the beta until the actual HTTPS URL passes the production smoke matrix for routes, assets, MIME types, APIs, headers, traversal denial, prompt-injection refusal, session isolation, browser console/network state, and mobile/desktop behavior.
 
-## Build the sterile package
-
-From the private repository root:
-
-```bash
-python scripts/maya_release_spine.py --config docs/release/readtheroom-public-pro.release.json --product readtheroom-public-pro --output <private-output-directory>
-```
-
-The release spine copies only explicit source-to-destination mappings, scans the result for forbidden paths and secret-like values, verifies a clean extracted copy, and writes SHA-256 manifests and a release-gate receipt.
-
 ## Verification
 
-Repository verification:
-
-```bash
-node --test tests/readtheroom-public-pro-v34-ui.test.mjs
-node --test tests/readtheroom-public-server-boundary.test.mjs
-node --test tests/readtheroom-public-standalone-server.test.mjs
-node --test tests/readtheroom-policy.test.mjs tests/readtheroom-calibration-session.test.mjs
-python scripts/read-the-room/qa-readtheroom-public-pro-v34.py --output-dir <evidence-directory>
-```
-
-Sterile extraction verification:
+Package verification:
 
 ```bash
 npm test
-npm start
 ```
+
+Start the verified loopback runtime with `npm start`.
 
 The Edge/CDP QA script verifies 1920×1080, 1600×900, 1366×768, and 390×844 viewports, pointer-driven controls, the quick-proof response path, duplicate IDs, horizontal overflow, font loading, console/network errors, root pseudo-element artifacts, and reduced-motion behavior.
 

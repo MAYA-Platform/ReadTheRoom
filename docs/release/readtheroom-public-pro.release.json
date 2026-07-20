@@ -25,6 +25,7 @@
         { "source": "tests/readtheroom-public-pro-v34-ui.test.mjs", "destination": "tests/readtheroom-public-pro-v34-ui.test.mjs" },
         { "source": "tests/readtheroom-public-standalone-server.test.mjs", "destination": "tests/readtheroom-public-standalone-server.test.mjs" },
         { "source": "tests/readtheroom-public-release-config.test.mjs", "destination": "tests/readtheroom-public-release-config.test.mjs" },
+        { "source": "tests/public-vocabulary-boundary.test.mjs", "destination": "tests/public-vocabulary-boundary.test.mjs" },
         { "source": "docs/release/readtheroom-public-pro.release.json", "destination": "docs/release/readtheroom-public-pro.release.json" }
       ],
       "exclusions": [
@@ -32,7 +33,6 @@
         "**/*secret*",
         "**/*credential*",
         "**/*key*.txt",
-        "**/agent-social-profile.json",
         "**/data/**",
         "**/state/**",
         "**/node_modules/**"
@@ -45,6 +45,7 @@
         [
           "node",
           "--test",
+          "tests/public-vocabulary-boundary.test.mjs",
           "tests/readtheroom-calibration-session.test.mjs",
           "tests/readtheroom-public-pro-v34-ui.test.mjs",
           "tests/readtheroom-public-standalone-server.test.mjs",

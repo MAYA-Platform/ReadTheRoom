@@ -110,7 +110,7 @@ export function analyzeContextEconomySignals(rawReply, contextText, profile = DE
         : 'within_budget';
   return {
     version: 'readtheroom_context_economy_v0_1',
-    sourcePattern: 'Sentdex/minion context-bloat restraint',
+    method: 'context_bloat_restraint',
     lane: lane || (lightweightTurn ? 'lightweight_turn' : 'unknown'),
     inputWords,
     outputWords,
@@ -164,7 +164,7 @@ function isPublicPrivateTurn(text) {
     || /\b(public|investor|client|customer|customers|business buyer|business buyers|website|landing page|customer page|customer-facing)\b.*\b(copy|version|post|pitch|page|deck|wording|message|rewrite|say|mention)\b/i.test(normalized)
     || /\b(copy|version|post|pitch|page|deck|wording|message|rewrite|say|mention)\b.*\b(public|investor|client|customer|customers|business buyer|business buyers|website|landing page|customer page|customer-facing)\b/i.test(normalized)
     || /\b(is it|should it|can this|can it|does this|could this)\b.*\b(private|public|internal|external|investor|customer|client)\b/i.test(normalized)
-    || /\b(internal|private|staff|arc|doctrine|implementation|architecture)\b.*\b(website|customers|business buyers|normal business|public|client|investor)\b/i.test(normalized)
+    || /\b(internal|private|staff|doctrine|implementation|architecture)\b.*\b(website|customers|business buyers|normal business|public|client|investor)\b/i.test(normalized)
     || /\b(readtheroom page|landing page|website)\b.*\b(real person|customer|trust product|public|human|benchmark)\b/i.test(normalized);
 }
 
@@ -179,36 +179,6 @@ function isPromptInjectionPrivateLeakTurn(text) {
 function isAmbiguousExecuteTurn(text) {
   const normalized = normalizeContextText(text);
   return /\b(maybe|what if|should we|could we|would it|can we|think about|idea|later|might need to|might want to|probably should)\b/i.test(normalized) && /\b(move|build|change|fix|write|edit|route|add|remove|ship|deploy|send|delete|run)\b/i.test(normalized);
-}
-
-function isActivationSweepTurn(text) {
-  const normalized = normalizeContextText(text);
-  const scopeSignal = /\b(all|every|full|whole|entire|across|system sweep|full sweep|backlog|batch|batches)\b/i.test(normalized);
-  const activationSignal = /\b(activate|activated|activation|infuse|usable signal|signals|useful logic|patterns|repo|repos|apps|ideas|mappings)\b/i.test(normalized);
-  const antiScaleDownSignal = /\b(scale\s+(?:this\s+)?down|dismissing|stash it|do not dismiss|don't dismiss|everything activated)\b/i.test(normalized);
-  return (scopeSignal && activationSignal) || antiScaleDownSignal;
-}
-
-export function analyzeActivationSweepSignals(contextText = '') {
-  const normalized = normalizeContextText(contextText);
-  const surfaces = [];
-  if (/\b(readtheroom|rtr|tone|correction|behavior|visual|human)\b/i.test(normalized)) surfaces.push('readtheroom');
-  if (/\b(memory|context|poison|persist|write)\b/i.test(normalized)) surfaces.push('memory_write_gate');
-  if (/\b(gatekeeper|permission|approval|runtime control|post-auth|post auth)\b/i.test(normalized)) surfaces.push('gatekeeper');
-  if (/\b(receipt|receipts|provenance|attestation|verify|verifiable)\b/i.test(normalized)) surfaces.push('recorder');
-  if (/\b(staff|playbook|skill pack|workflow|team)\b/i.test(normalized)) surfaces.push('staff_workflow');
-  if (/\b(router|provider|fallback|endpoint|model)\b/i.test(normalized)) surfaces.push('model_router');
-  return {
-    version: 'readtheroom_activation_sweep_v0_1',
-    sourcePatterns: [
-      'ailuntx/Thinking-with-Visual-Primitives visual decomposition',
-      'Bossthetigan/NOLO tone and correction calibration',
-      'elbenhawy007/Kimi-Case-Battle-For-Pricing collaboration behavior abstraction'
-    ],
-    fullSurfaceSweep: isActivationSweepTurn(contextText),
-    surfaces: surfaces.length ? surfaces : ['readtheroom', 'memory_write_gate', 'gatekeeper', 'recorder', 'staff_workflow', 'model_router'],
-    principle: 'Do not scale repo activation down before checking every candidate against approved product/runtime surfaces.'
-  };
 }
 
 function isHardNoChangeTurn(text) {
@@ -266,9 +236,7 @@ function applyToolSuggestionPolicy(profile, contextText) {
   if (lane === 'ambiguous_execute') {
     return { enabled: false, reason: 'Ambiguous execution language detected; preserve dialogue mode.', label: 'paused' };
   }
-  if (lane === 'activation_sweep') {
-    return { enabled: true, reason: 'Full repo activation sweep explicitly requested; inspect every candidate across approved product/runtime surfaces before stashing.', label: 'enabled' };
-  }
+
   if (['short_status', 'lightweight_turn', 'sensitive_mode', 'hard_no_change', 'correction', 'profanity_boundary', 'humor_style', 'public_private', 'frustration_loop'].includes(lane)) {
     return { enabled: false, reason: `${lane} does not imply tool execution.`, label: 'suppressed' };
   }
@@ -620,7 +588,7 @@ export function classifyReadTheRoomLane(contextText, profile = DEFAULT_PROFILE_F
   if (isAmbiguousExecuteTurn(normalized)) return { lane: 'ambiguous_execute', priority: 2 };
   if (isPublicPrivateTurn(normalized)) return { lane: 'public_private', priority: 2 };
   if (isSensitiveTurn(normalized)) return { lane: 'sensitive_mode', priority: 2 };
-  if (isActivationSweepTurn(normalized)) return { lane: 'activation_sweep', priority: 3 };
+
   if (isHardNoChangeTurn(normalized)) return { lane: 'hard_no_change', priority: 4 };
   if (isFrustrationTurn(normalized) && /\b(pep talk|motivational|breaking|broken|stuck|loop|third time|same wall)\b/i.test(normalized)) return { lane: 'frustration_loop', priority: 5 };
   if (isCorrectionTurn(normalized)) return { lane: 'correction', priority: 6 };
@@ -711,9 +679,7 @@ function buildLaneFallback(lane, contextText, rawReply) {
   if (lane === 'lightweight_turn') {
     return 'Here. What are we doing?';
   }
-  if (lane === 'activation_sweep') {
-    return 'Agreed. Full activation sweep: check every repo against approved product/runtime surfaces, activate usable signal, and only stash after redundancy is proven.';
-  }
+
   if (lane === 'execution') {
     return 'On it. I’ll do the scoped work, save the file, and verify the result with evidence.';
   }
@@ -774,7 +740,7 @@ export function applyReadTheRoomPolicy(rawReply, contextText, profile = DEFAULT_
 
   if (laneState.lane === 'high_risk_action') {
     output = 'That touches a high-risk action. I can draft, stage, or inspect first, but I need explicit confirmation before deleting, sending, publishing, purchasing, or handling credentials.';
-  } else if (['sensitive_mode', 'frustration_loop', 'hard_no_change', 'humor_style', 'profanity_boundary', 'public_private', 'ambiguous_execute', 'lightweight_turn', 'activation_sweep'].includes(laneState.lane)) {
+  } else if (['sensitive_mode', 'frustration_loop', 'hard_no_change', 'humor_style', 'profanity_boundary', 'public_private', 'ambiguous_execute', 'lightweight_turn'].includes(laneState.lane)) {
     output = buildLaneFallback(laneState.lane, contextText, output);
   } else if (laneState.lane === 'correction' && localProfile.correction_handling === 'ack_and_adapt') {
     output = buildLaneFallback(laneState.lane, contextText, output);
@@ -791,7 +757,6 @@ export function applyReadTheRoomPolicy(rawReply, contextText, profile = DEFAULT_
   output = truncateWords(output, Number(localProfile.max_reply_words || 0));
 
   const toolSuggestion = applyToolSuggestionPolicy(localProfile, normalizedContext);
-  const activationSweep = analyzeActivationSweepSignals(contextText);
 
   return {
     text: output || 'Understood.',
@@ -803,8 +768,7 @@ export function applyReadTheRoomPolicy(rawReply, contextText, profile = DEFAULT_
       wordCount: output ? output.split(/\s+/).filter(Boolean).length : 0,
       responseQualitySignals,
       responseQualityResistance: responseQualitySignals.resistance,
-      contextEconomy: analyzeContextEconomySignals(output, contextText, localProfile, laneState.lane),
-      activationSweep: laneState.lane === 'activation_sweep' ? activationSweep : null
+      contextEconomy: analyzeContextEconomySignals(output, contextText, localProfile, laneState.lane)
     }
   };
 }
@@ -817,8 +781,7 @@ export function buildReadTheRoomArtifacts(profile = DEFAULT_PROFILE_FALLBACK) {
   const safeProfile = profile || DEFAULT_PROFILE_FALLBACK;
   const laneGuide = [
     'Short status: <= threshold words and acknowledgment-only gets short_status_reply only.',
-    'Lightweight turn: greetings, pings, and low-signal check-ins use Minion-style context economy instead of spending a long response or tool spinout.',
-    'Activation sweep: repo/backlog activation language means inspect every candidate against approved product/runtime surfaces before stashing anything as redundant.',
+    'Lightweight turn: greetings, pings, and low-signal check-ins use bounded context economy instead of spending a long response or tool spinout.',
     'Correction: acknowledge, retire phrase/style, and adapt without defense.',
     'Frustration loop: validate briefly, then triage the exact failing step.',
     'Sensitive mode: no humor, no diagnosis, no forced productivity.',

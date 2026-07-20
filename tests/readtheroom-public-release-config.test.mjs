@@ -16,7 +16,7 @@ function walkFiles(dir, prefix = '') {
   });
 }
 
-test('public release config is a focused explicit allowlist with no private runtime surface', () => {
+test('public release config is a focused explicit allowlist', () => {
   assert.equal(config.suite_id, 'readtheroom-public-pro-v3-4');
   assert.equal(config.release_gate, 'ready_with_disclosed_limits');
   assert.equal(config.products.length, 1);
@@ -29,10 +29,7 @@ test('public release config is a focused explicit allowlist with no private runt
   assert.ok(sources.includes('scripts/read-the-room/readtheroomPublicServer.mjs'));
   assert.ok(sources.includes('scripts/read-the-room/readtheroomPolicy.js'));
   assert.ok(sources.includes('read-the-room-public-pro/package.runtime.json'));
-  assert.ok(!sources.includes('scripts/maya-mvp-server.js'), 'private founder server must never enter the public package');
-  assert.ok(!sources.includes('scripts/read-the-room/readtheroomProfileLoader.js'), 'private profile discovery must never enter the public package');
-  assert.ok(sources.every((source) => !source.startsWith('maya-agent/')), 'private MAYA runtime files must not enter the package');
-  assert.ok(sources.every((source) => !/(?:^|\/)(?:data|state|docs\/MAYA_PRODUCT_QUEUE)(?:\/|$)/i.test(source)));
+  assert.ok(sources.every((source) => !/(?:^|\/)(?:data|state)(?:\/|$)/i.test(source)));
 
   for (const entry of product.allowlist) {
     const sourceExists = fs.existsSync(path.join(root, entry.source));
@@ -43,20 +40,14 @@ test('public release config is a focused explicit allowlist with no private runt
   }
 });
 
-test('packaged runtime source contains no founder identity or private profile-discovery markers', () => {
+test('packaged runtime source excludes non-public identity and profile-discovery markers', () => {
   const runtimeSource = [
     fs.readFileSync(path.join(root, 'scripts', 'read-the-room', 'readtheroomPolicy.js'), 'utf8'),
     fs.readFileSync(path.join(root, 'scripts', 'read-the-room', 'readtheroomPublicServer.mjs'), 'utf8')
   ].join('\n');
   for (const forbidden of [
-    /\bJosh(?:ua)?\b/i,
-    /\bHermes\b/i,
-    /MAYA Founder Files/i,
-    /MAYA\/Hermes\/staff surfaces/i,
     /\b(?:sourcePath|archetypeDir)\b/,
-    /READ_THE_ROOM_PROFILE_PATH/i,
-    /agent-social-profile\.json/i,
-    /allow_profane_founder_mode/i
+    /READ_THE_ROOM_PROFILE_PATH/i
   ]) {
     assert.doesNotMatch(runtimeSource, forbidden);
   }
