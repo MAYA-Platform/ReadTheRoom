@@ -13,6 +13,8 @@ One guided session. Zero generic presets. Your AI actually *reads the room.*
 
 ![ReadTheRoom calibration studio](docs/images/readtheroom-desktop.png)
 
+**Live demo:** [watch the 60-second proof in action](docs/images/rtr-demo.mp4) — start the proof, run a prompt, compare Default AI vs ReadTheRoom.
+
 ## What it does
 
 - **Guided behavior calibration**, tune real behavior, not tone sliders
