@@ -1,21 +1,26 @@
 # ReadTheRoom
 
-**Context before response.**
+**Make your AI stop feeling generic.**
 
-ReadTheRoom is a local, reviewable behavior-calibration layer for AI assistants. A short guided session tunes how an assistant handles directness, warmth, humor, profanity, corrections, brainstorming, short messages, and tool restraint without turning every conversation into a settings panel.
+ReadTheRoom is a local, reviewable behavior-calibration layer for AI assistants.
+A short guided session tunes how your assistant handles directness, warmth,
+humor, profanity, corrections, brainstorming, short messages, and tool restraint
+— without turning every conversation into a settings panel.
+
+One guided session. Zero generic presets. Your AI actually *reads the room.*
 
 > Public Professional v3.4 is a controlled public beta. Calibration state is ephemeral and local to the running process. It is not a hosted account service or a production SLA.
 
 ![ReadTheRoom calibration studio](docs/images/readtheroom-desktop.png)
 
-## What it proves
+## What it does
 
-- Guided behavior calibration instead of generic tone presets
-- Explicit profile and context controls
-- Sandbox-style experimentation without silent durable learning
-- Reviewable calibration receipts
-- Public-only runtime boundaries and loopback-by-default operation
-- Responsive desktop and mobile experience
+- **Guided behavior calibration** — tune real behavior, not tone sliders
+- **Explicit profile and context controls** — you decide what the AI knows and how it acts
+- **Sandbox-style experimentation** — test freely, nothing learns silently
+- **Reviewable calibration receipts** — see exactly what changed and why
+- **Public-only runtime boundaries** — loopback by default, no silent data collection
+- **Responsive desktop and mobile** — calibrate anywhere
 
 ## Quick start
 
@@ -29,6 +34,13 @@ npm start
 Open `http://127.0.0.1:8877/read-the-room-public-pro-v3-4/`.
 
 No dependency installation is required. The package uses Node's built-in runtime and test runner.
+
+## Why it exists
+
+Most "AI personality" settings are a slider and a prayer. ReadTheRoom treats
+behavior calibration as a first-class problem: a guided session that produces a
+reviewable, repeatable behavior profile — so your assistant stops sounding like
+a default and starts sounding like *yours*.
 
 ## Public API surface
 
@@ -58,7 +70,3 @@ The release has also passed clean-extraction, browser, responsive-layout, sessio
 Do not expose the development server directly to the internet. Report sensitive findings privately using [SECURITY.md](SECURITY.md).
 
 ## License
-
-Source-available under the [2ndNatureAi Public Beta Evaluation License](LICENSE.txt). Evaluation and good-faith security research are allowed; redistribution, commercial use, hosted service use, and production deployment require written authorization.
-
-Copyright © 2026 2ndNatureAi.
