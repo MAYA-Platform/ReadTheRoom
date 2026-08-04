@@ -13,7 +13,7 @@ One guided session. Zero generic presets. Your AI actually *reads the room.*
 
 ![ReadTheRoom calibration studio](docs/images/readtheroom-desktop.png)
 
-**Live demo:** [watch the 60-second proof in action](docs/images/rtr-demo.webm). Start the proof, run a prompt, compare Default AI vs ReadTheRoom.
+Run the proof, drop in a prompt, and compare Default AI vs ReadTheRoom side by side.
 
 ## What it does
 
