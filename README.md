@@ -54,6 +54,7 @@ The standalone server exposes only the public calibration application and its do
 node --check scripts/read-the-room/readtheroomPublicServer.mjs
 node --check scripts/read-the-room/readtheroomPolicy.js
 node --check scripts/read-the-room/readtheroomCalibrationSession.js
+node --check scripts/read-the-room/rtrToMemoryLane.mjs
 npm test
 ```
 
@@ -70,6 +71,20 @@ The release has also passed clean-extraction, browser, responsive-layout, sessio
 - Explicit route allowlist and traversal denial
 
 Do not expose the development server directly to the internet. Report sensitive findings privately using [SECURITY.md](SECURITY.md).
+
+## Memory Layer (Memory Lane bridge)
+
+Completed calibration sessions can be sealed into a [Memory Lane](https://github.com/MAYA-Platform/MAYA-Memory-Lane) library — the same tamper-evident, chain-verified, searchable memory layer that powers MAYA and Hermes. A session that lives in a local JSON file today becomes a sealed, chain-linked block you can search, resume, and prove hasn't been altered.
+
+```bash
+node scripts/read-the-room/rtrToMemoryLane.mjs \
+  --store path/to/readtheroom-calibration-sessions.json \
+  --ml-base http://127.0.0.1:8770
+```
+
+Deterministic and free: facts are written explicitly (no LLM extraction, no token cost). Re-running is idempotent — a session ledger (`data/.rtr-ml-sync-ledger.json`) prevents double-sealing. Use `--dry-run` to preview first. The bridge runs against any Memory Lane server (`MEMORY_LANE_LIBRARY` pointed at your own library).
+
+This is the read side of the same loop: Memory Lane collects itself (write) and answers questions across sessions (read) — ReadTheRoom calibration history becomes durable, queryable memory instead of an editable local file.
 
 ## License
 
