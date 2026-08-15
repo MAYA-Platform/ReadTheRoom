@@ -80,7 +80,7 @@ test('runtime package is dependency-free and starts only the standalone server',
   assert.match(packageJson.scripts.test, /readtheroom-public-standalone-server\.test\.mjs/);
 });
 
-test('runtime package carries the public beta evaluation license plus third-party font licenses', () => {
+test('runtime package carries the MIT license plus third-party font licenses', () => {
   const licenseCandidates = [
     path.join(root, 'read-the-room-public-pro', 'LICENSE.txt'),
     path.join(root, 'LICENSE.txt')
@@ -89,9 +89,8 @@ test('runtime package carries the public beta evaluation license plus third-part
   assert.ok(licensePath, 'package-level license notice must exist');
   const notice = fs.readFileSync(licensePath, 'utf8');
   assert.match(notice, /2ndNatureAi/);
-  assert.match(notice, /Public Beta Evaluation License/i);
-  assert.match(notice, /non-commercial evaluation/i);
-  assert.match(notice, /OFL-Inter\.txt/);
+  assert.match(notice, /MIT License/i);
+  assert.match(notice, /permission is hereby granted/i);
   assert.ok(fs.existsSync(path.join(root, 'read-the-room-public-pro', 'assets', 'fonts', 'OFL-Inter.txt')));
   assert.ok(fs.existsSync(path.join(root, 'read-the-room-public-pro', 'assets', 'fonts', 'OFL-JetBrains-Mono.txt')));
 });

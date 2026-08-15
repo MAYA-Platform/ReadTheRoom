@@ -51,9 +51,9 @@ The dedicated public runtime:
 
 - Typed prompts are sent to the hosted ReadTheRoom process and kept only in ephemeral process memory for the active session.
 - The browser stores only the random session ID in `localStorage`; the server process stores the corresponding session until expiration or restart.
-- Nothing becomes persistent profile learning without explicit review; the controlled public beta does not enable persistent profile writes.
+- Nothing becomes persistent profile learning without explicit review; the released product does not enable persistent profile writes.
 - Voice recognition is handled by the user’s browser and may use its online speech service. ReadTheRoom receives only the resulting text and retains it in ephemeral session memory.
-- The beta does not claim zero processing, local-only processing, or absolute security.
+- The release does not claim zero processing, local-only processing, or absolute security.
 
 ## HTTPS deployment requirements
 
@@ -66,7 +66,7 @@ Bind the Node process to loopback and place it behind a managed HTTPS reverse pr
 - an explicit public hostname
 - no direct access to the private repository or local MAYA runtime
 
-Do not announce the beta until the actual HTTPS URL passes the production smoke matrix for routes, assets, MIME types, APIs, headers, traversal denial, prompt-injection refusal, session isolation, browser console/network state, and mobile/desktop behavior.
+Do not announce the release until the actual HTTPS URL passes the production smoke matrix for routes, assets, MIME types, APIs, headers, traversal denial, prompt-injection refusal, session isolation, browser console/network state, and mobile/desktop behavior.
 
 ## Verification
 
@@ -84,10 +84,10 @@ The Edge/CDP QA script verifies 1920×1080, 1600×900, 1366×768, and 390×844 v
 
 Allowed before real HTTPS verification:
 
-> Code-complete and locally verified for a controlled public beta.
+> Code-complete and locally verified for a released product.
 
 Allowed only after the deployed URL passes the production smoke:
 
-> Deployed and verified for controlled public beta access.
+> Deployed and verified for released product access.
 
 Do not market the product as breach-proof, perfectly safe, or production-certified. The defensible claim is that ReadTheRoom uses explicit boundaries, ephemeral sessions, review-before-learning, action restraint, and verifiable release receipts.

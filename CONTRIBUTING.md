@@ -1,6 +1,6 @@
 # Contributing
 
-This public beta is feedback-first.
+This local release is feedback-first.
 
 ## Best ways to help
 
@@ -10,7 +10,7 @@ This public beta is feedback-first.
 
 ## Code contributions
 
-Unsolicited pull requests are not accepted during the controlled public beta unless a maintainer explicitly invites one. This keeps the release boundary reviewable while the architecture settles.
+Unsolicited pull requests are not accepted during the released product unless a maintainer explicitly invites one. This keeps the release boundary reviewable while the architecture settles.
 
 ## Security
 

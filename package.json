@@ -3,7 +3,7 @@
   "version": "3.4.0",
   "private": true,
   "type": "module",
-  "description": "Sterile deployment package for the ReadTheRoom Public Professional controlled beta.",
+  "description": "Sterile deployment package for the ReadTheRoom Public Professional released product.",
   "engines": {
     "node": ">=22"
   },

@@ -1,163 +1,163 @@
 {
-  "schema": "2ndnatureai_public_release_manifest_v1",
-  "product": "ReadTheRoom",
-  "version": "3.4.0-beta.1",
-  "source": "verified exact v3.4.0 artifact plus public repository metadata",
-  "entries": [
-    {
-      "path": ".gitignore",
-      "bytes": 74,
-      "sha256": "972c5880bab0744be4ba42cc056eaa398ed5d33ac2ea8f77886270e9b3775f53"
-    },
-    {
-      "path": "CONTRIBUTING.md",
-      "bytes": 620,
-      "sha256": "1a57ce2351d36333923099922f8fa0dd94850ff688a86b3d5194d17c49d3a811"
-    },
-    {
-      "path": "docs/ci/verify.yml.example",
-      "bytes": 514,
-      "sha256": "85d43bf94408d58ca1a71da4edd37a91250de61b5ee12e8b5ab751d3a075563c"
-    },
-    {
-      "path": "docs/images/readtheroom-desktop.png",
-      "bytes": 199273,
-      "sha256": "2d2cbe1e69a63e871c5bd39ef853d9164b69e7e8ba6d480ccb2c501174109f02"
-    },
-    {
-      "path": "docs/images/readtheroom-mobile.png",
-      "bytes": 67474,
-      "sha256": "a716ad104f11f14f573969edb891e76413988577ea51a6039ab9b6c2d7fac3e6"
-    },
-    {
-      "path": "docs/release/readtheroom-public-pro.release.json",
-      "bytes": 5471,
-      "sha256": "4f2a8675ab6b20dc7dd9add5f76505ec45ad5188d878dae6be8184514b7bb1de"
-    },
-    {
-      "path": "docs/release/verified-v3.4.0-package-manifest.json",
-      "bytes": 5093,
-      "sha256": "21aa070d8fc3e8c3f399bbeecae7618be57ec6f598bbe3196d4eca7b6f4a39f6"
-    },
-    {
-      "path": "LICENSE.txt",
-      "bytes": 1368,
-      "sha256": "b12fe68d2611a8f84ae7e552a9b5ab3ca37f78d0cc9b3af08caee27bdfe8f1a8"
-    },
-    {
-      "path": "package.json",
-      "bytes": 618,
-      "sha256": "6ccda7853b69f09b41fb8b942a637a98115b5f4170fc396cc5bac5a223c8ea5a"
-    },
-    {
-      "path": "PUBLIC_BETA_LIMITS.md",
-      "bytes": 567,
-      "sha256": "b2a7c3327eede53cac179f336a8d8c0ef89bf63927cdf2fb65c8c30bbacffaff"
-    },
-    {
-      "path": "read-the-room-public-pro/assets/fonts/inter-latin-wght-normal.woff2",
-      "bytes": 48256,
-      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
-    },
-    {
-      "path": "read-the-room-public-pro/assets/fonts/jetbrains-mono-latin-wght-normal.woff2",
-      "bytes": 40404,
-      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
-    },
-    {
-      "path": "read-the-room-public-pro/assets/fonts/OFL-Inter.txt",
-      "bytes": 4570,
-      "sha256": "05f6002bf3f86f0040a2b0cec4d103346ba12f6659817838196f76a218d55724"
-    },
-    {
-      "path": "read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt",
-      "bytes": 4617,
-      "sha256": "a56054325c8cf79382a9b8547d0f558dc812b5caa773b84ef8b550e12f3a2b56"
-    },
-    {
-      "path": "read-the-room-public-pro/index.html",
-      "bytes": 27748,
-      "sha256": "47220001d3effcc165a21159bb47138802685dbeee0489234ab46839181c8cb7"
-    },
-    {
-      "path": "read-the-room-public-pro/README.md",
-      "bytes": 4160,
-      "sha256": "5dfc891aa1fb4ac36382b138b5a8988b780e90a431807d2e46e872d5aa4d9b42"
-    },
-    {
-      "path": "read-the-room-public-pro/readtheroom-public-pro.css",
-      "bytes": 36616,
-      "sha256": "be7e9f70ecd84122502561739d450bf0eb6542567dcbb183da41e931b23676e2"
-    },
-    {
-      "path": "read-the-room-public-pro/readtheroom-public-pro.js",
-      "bytes": 50802,
-      "sha256": "e3b76142dba66dba781ca95d0d1f796ebafed25ce5df8fc625239531a9b10088"
-    },
-    {
-      "path": "README.md",
-      "bytes": 3314,
-      "sha256": "31aab5711feff6858d5ccb8ac79c6ea89f4b822986441d6261d592465d012ba6"
-    },
-    {
-      "path": "RELEASE_NOTES.md",
-      "bytes": 461,
-      "sha256": "b935c53c7982e37c57355f3303f911fdcf91c011c6f3c9c78d9457544953ea3d"
-    },
-    {
-      "path": "scripts/read-the-room/readtheroomCalibrationSession.js",
-      "bytes": 16487,
-      "sha256": "c4180bb5affdbf865df327f5a1f56a5c4217488d1169c9d6d82364eda0e364a8"
-    },
-    {
-      "path": "scripts/read-the-room/readtheroomPolicy.js",
-      "bytes": 41121,
-      "sha256": "16653799f33f2096f122dc7c312fbfe7e7b742451663fba63b40d99672d19288"
-    },
-    {
-      "path": "scripts/read-the-room/readtheroomPublicServer.mjs",
-      "bytes": 15086,
-      "sha256": "8fea993761ed17879a1ef82af1403a2a226a0e7006609a04198b82d7f897bf75"
-    },
-    {
-      "path": "SECURITY.md",
-      "bytes": 1047,
-      "sha256": "c5a8549986320701b56880f6d376fa8ac9e8d004cd2afbe4428600667ffbcc62"
-    },
-    {
-      "path": "tests/readtheroom-calibration-session.test.mjs",
-      "bytes": 11639,
-      "sha256": "550b94b1b2adac0564544adb128398a843be98113723c13d17f5e8bd5e2b2765"
-    },
-    {
-      "path": "tests/readtheroom-public-pro-v34-ui.test.mjs",
-      "bytes": 7604,
-      "sha256": "7cce11a62106f25915e5448612b951f03d432f4c3b6707d2aaac76c3e12de16b"
-    },
-    {
-      "path": "tests/readtheroom-public-release-config.test.mjs",
-      "bytes": 5531,
-      "sha256": "ef9fa88560f8140f7a2eb103b14eb66fdbc41327de0af4d2386ef6496ca1f26d"
-    },
-    {
-      "path": "tests/readtheroom-public-standalone-server.test.mjs",
-      "bytes": 7634,
-      "sha256": "e0659a84a539fb7ba0b296733a9d5c2131cbe0fc6219f904705384db2f308031"
-    },
-    {
-      "path": "tests/public-vocabulary-boundary.test.mjs",
-      "bytes": 3197,
-      "sha256": "41c2e244a69d3c72356494d288e987dd82c683443dc83f13c5f7254a8513106b"
-    },
-    {
-      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
-      "bytes": 1207,
-      "sha256": "5f32f0a58aa6e02dce185f96c0a93a654be72e63207d85e0dba6295f62ae187f"
-    },
-    {
-      "path": ".github/ISSUE_TEMPLATE/config.yml",
-      "bytes": 29,
-      "sha256": "d6d81427cbfd6fb2c87462698c241fd6c31e47025c137498e50b8a01b228cb95"
-    }
-  ]
+ "schema": "2ndnatureai_public_release_manifest_v1",
+ "product": "ReadTheRoom",
+ "version": "3.4.0",
+ "source": "verified exact v3.4.0 artifact plus public repository metadata",
+ "entries": [
+  {
+   "path": ".gitignore",
+   "bytes": 83,
+   "sha256": "9d044498d491bc1c633b80fd661a56b070d804f7b4632d06df7d718024ef2609"
+  },
+  {
+   "path": "CONTRIBUTING.md",
+   "bytes": 616,
+   "sha256": "08b9b1a94c882acf087cc1e4ea0f808443fb2e9776ff157ed5fb13fff6a37a71"
+  },
+  {
+   "path": "docs/ci/verify.yml.example",
+   "bytes": 514,
+   "sha256": "85d43bf94408d58ca1a71da4edd37a91250de61b5ee12e8b5ab751d3a075563c"
+  },
+  {
+   "path": "docs/images/readtheroom-desktop.png",
+   "bytes": 199273,
+   "sha256": "2d2cbe1e69a63e871c5bd39ef853d9164b69e7e8ba6d480ccb2c501174109f02"
+  },
+  {
+   "path": "docs/images/readtheroom-mobile.png",
+   "bytes": 67474,
+   "sha256": "a716ad104f11f14f573969edb891e76413988577ea51a6039ab9b6c2d7fac3e6"
+  },
+  {
+   "path": "docs/release/readtheroom-public-pro.release.json",
+   "bytes": 5471,
+   "sha256": "4f2a8675ab6b20dc7dd9add5f76505ec45ad5188d878dae6be8184514b7bb1de"
+  },
+  {
+   "path": "docs/release/verified-v3.4.0-package-manifest.json",
+   "bytes": 5093,
+   "sha256": "21aa070d8fc3e8c3f399bbeecae7618be57ec6f598bbe3196d4eca7b6f4a39f6"
+  },
+  {
+   "path": "LICENSE.txt",
+   "bytes": 1089,
+   "sha256": "85b6ed8bfb4a2e5837d70eb69f52b700c9772be6ad8c8ee793154e9c0312e3b0"
+  },
+  {
+   "path": "package.json",
+   "bytes": 619,
+   "sha256": "d696a4547145ad6d26156fa1bbdd17a301be942a88d212785500d92982ae6df1"
+  },
+  {
+   "path": "PUBLIC_LIMITS.md",
+   "bytes": 548,
+   "sha256": "28ee438209978556372861d38dc62004b606ca32d099df8b5b1e97b214dafad2"
+  },
+  {
+   "path": "read-the-room-public-pro/assets/fonts/inter-latin-wght-normal.woff2",
+   "bytes": 48256,
+   "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+  },
+  {
+   "path": "read-the-room-public-pro/assets/fonts/jetbrains-mono-latin-wght-normal.woff2",
+   "bytes": 40404,
+   "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
+  },
+  {
+   "path": "read-the-room-public-pro/assets/fonts/OFL-Inter.txt",
+   "bytes": 4570,
+   "sha256": "05f6002bf3f86f0040a2b0cec4d103346ba12f6659817838196f76a218d55724"
+  },
+  {
+   "path": "read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt",
+   "bytes": 4617,
+   "sha256": "a56054325c8cf79382a9b8547d0f558dc812b5caa773b84ef8b550e12f3a2b56"
+  },
+  {
+   "path": "read-the-room-public-pro/index.html",
+   "bytes": 27737,
+   "sha256": "93804d3c6e9e192b62fed2ccbfa30224837587d04c4c8d4a73795d375861d8a4"
+  },
+  {
+   "path": "read-the-room-public-pro/README.md",
+   "bytes": 4055,
+   "sha256": "cf157a2fd17d6b0136da4ae8d355b5d657ac84346118bbdad7842b1d32ff40c3"
+  },
+  {
+   "path": "read-the-room-public-pro/readtheroom-public-pro.css",
+   "bytes": 36616,
+   "sha256": "be7e9f70ecd84122502561739d450bf0eb6542567dcbb183da41e931b23676e2"
+  },
+  {
+   "path": "read-the-room-public-pro/readtheroom-public-pro.js",
+   "bytes": 50802,
+   "sha256": "e3b76142dba66dba781ca95d0d1f796ebafed25ce5df8fc625239531a9b10088"
+  },
+  {
+   "path": "README.md",
+   "bytes": 4519,
+   "sha256": "1bda733a4ddcaf4c2cad840dd10b131dd19d1fcd710655592b571b80ff89533d"
+  },
+  {
+   "path": "RELEASE_NOTES.md",
+   "bytes": 791,
+   "sha256": "c0f16c179ef82b9b1161f082652aa41006857c5ccc5259d85a688aa876f974de"
+  },
+  {
+   "path": "scripts/read-the-room/readtheroomCalibrationSession.js",
+   "bytes": 16487,
+   "sha256": "c4180bb5affdbf865df327f5a1f56a5c4217488d1169c9d6d82364eda0e364a8"
+  },
+  {
+   "path": "scripts/read-the-room/readtheroomPolicy.js",
+   "bytes": 41121,
+   "sha256": "16653799f33f2096f122dc7c312fbfe7e7b742451663fba63b40d99672d19288"
+  },
+  {
+   "path": "scripts/read-the-room/readtheroomPublicServer.mjs",
+   "bytes": 15086,
+   "sha256": "8fea993761ed17879a1ef82af1403a2a226a0e7006609a04198b82d7f897bf75"
+  },
+  {
+   "path": "SECURITY.md",
+   "bytes": 1037,
+   "sha256": "7d8ab9bb6db05dc25feedc67dd0402b60e8c2cb699eada80399144177abcb70b"
+  },
+  {
+   "path": "tests/readtheroom-calibration-session.test.mjs",
+   "bytes": 11639,
+   "sha256": "550b94b1b2adac0564544adb128398a843be98113723c13d17f5e8bd5e2b2765"
+  },
+  {
+   "path": "tests/readtheroom-public-pro-v34-ui.test.mjs",
+   "bytes": 7604,
+   "sha256": "7cce11a62106f25915e5448612b951f03d432f4c3b6707d2aaac76c3e12de16b"
+  },
+  {
+   "path": "tests/readtheroom-public-release-config.test.mjs",
+   "bytes": 5453,
+   "sha256": "845041a4d1d0905eab74c40af7e8e5d878d1f562e4fd0a752b47d9a2e8a7882f"
+  },
+  {
+   "path": "tests/readtheroom-public-standalone-server.test.mjs",
+   "bytes": 7634,
+   "sha256": "e0659a84a539fb7ba0b296733a9d5c2131cbe0fc6219f904705384db2f308031"
+  },
+  {
+   "path": "tests/public-vocabulary-boundary.test.mjs",
+   "bytes": 3197,
+   "sha256": "41c2e244a69d3c72356494d288e987dd82c683443dc83f13c5f7254a8513106b"
+  },
+  {
+   "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+   "bytes": 1207,
+   "sha256": "5f32f0a58aa6e02dce185f96c0a93a654be72e63207d85e0dba6295f62ae187f"
+  },
+  {
+   "path": ".github/ISSUE_TEMPLATE/config.yml",
+   "bytes": 29,
+   "sha256": "d6d81427cbfd6fb2c87462698c241fd6c31e47025c137498e50b8a01b228cb95"
+  }
+ ]
 }

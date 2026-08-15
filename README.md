@@ -9,7 +9,7 @@ humor, profanity, corrections, brainstorming, short messages, and tool restraint
 
 One guided session. Zero generic presets. Your AI actually *reads the room.*
 
-> Public Professional v3.4 is a controlled public beta. Calibration state is ephemeral and local to the running process. It is not a hosted account service or a production SLA.
+> Public Professional v3.4 is a released product. Calibration state is ephemeral and local to the running process. It is not a hosted account service or a production SLA.
 
 ![ReadTheRoom calibration studio](docs/images/readtheroom-desktop.png)
 
@@ -58,9 +58,9 @@ node --check scripts/read-the-room/rtrToMemoryLane.mjs
 npm test
 ```
 
-A ready-to-enable GitHub Actions template is included at `docs/ci/verify.yml.example`; local verification remains the release authority for this beta.
+A ready-to-enable GitHub Actions template is included at `docs/ci/verify.yml.example`; local verification remains the release authority for this release.
 
-The release has also passed clean-extraction, browser, responsive-layout, session-isolation, malformed-request, and public-boundary audits. See [PUBLIC_BETA_LIMITS.md](PUBLIC_BETA_LIMITS.md) for the precise claim boundary.
+The release has also passed clean-extraction, browser, responsive-layout, session-isolation, malformed-request, and public-boundary audits. See [PUBLIC_LIMITS.md](PUBLIC_LIMITS.md) for the precise claim boundary.
 
 ## Security and privacy
 
@@ -88,7 +88,7 @@ This is the read side of the same loop: Memory Lane collects itself (write) and 
 
 ## License
 
-ReadTheRoom Public Professional is distributed under the 2ndNatureAi Public Beta Evaluation License 1.0. See [LICENSE.txt](LICENSE.txt) for the full terms.
+ReadTheRoom Public Professional is distributed under the MIT License. See [LICENSE.txt](LICENSE.txt) for the full terms.
 
 Bundled font files remain governed by their own notices: [OFL-Inter.txt](read-the-room-public-pro/assets/fonts/OFL-Inter.txt) and [OFL-JetBrains-Mono.txt](read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt).
 

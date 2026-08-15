@@ -1,6 +1,6 @@
-# ReadTheRoom Public Professional v3.4.0-beta.1
+# ReadTheRoom Public Professional v3.4.0
 
-Initial controlled public beta.
+The full release line. ReadTheRoom is a local, reviewable behavior-calibration layer for AI assistants. One guided session tunes directness, warmth, humor, profanity, corrections, brainstorming, short messages, and tool restraint without turning every conversation into a settings panel.
 
 ## Included
 
@@ -11,6 +11,10 @@ Initial controlled public beta.
 - Responsive desktop/mobile UI
 - Public-only standalone Node server
 - 23 package-local tests
+
+## License
+
+MIT License. See [LICENSE.txt](LICENSE.txt) for the full terms.
 
 ## Boundaries
 
