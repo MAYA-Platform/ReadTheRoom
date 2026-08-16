@@ -1,6 +1,6 @@
 # Public Limits
 
-ReadTheRoom Public Professional v3.4 demonstrates local behavior calibration and reviewable policy output.
+ReadTheRoom v3.4 demonstrates local behavior calibration and reviewable policy output.
 
 It does not claim:
 

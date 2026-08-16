@@ -15,6 +15,6 @@ For non-sensitive bugs, open a normal GitHub issue with reproduction steps, expe
 - These projects are local releases, not production services.
 - Keep all tests on data and systems you own or are authorized to inspect.
 - Do not upload live credentials, customer data, or private repositories to public issues.
-- ReadTheRoom and MAYA Repo Brief run locally by default; do not expose their loopback development servers directly to the internet.
+- ReadTheRoom and MAYA Sentinel run locally by default; do not expose their loopback development servers directly to the internet.
 
 We will acknowledge a valid private report as quickly as practical, investigate it, and publish a fix or mitigation when appropriate.

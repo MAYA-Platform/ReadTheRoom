@@ -8,7 +8,7 @@
 
 ## Product boundary
 
-ReadTheRoom Public Professional is the controlled public proof experience for context-before-response. It demonstrates generic versus calibrated behavior, action restraint, review-before-learning, and downloadable receipts without exposing the private local MAYA runtime.
+ReadTheRoom is the public proof experience for context-before-response. It demonstrates generic versus calibrated behavior, action restraint, review-before-learning, and downloadable receipts without exposing the private internal runtime.
 
 ## Canonical public runtime
 
@@ -64,7 +64,7 @@ Bind the Node process to loopback and place it behind a managed HTTPS reverse pr
 - deployment logs with secret redaction
 - process restart and health monitoring
 - an explicit public hostname
-- no direct access to the private repository or local MAYA runtime
+- no direct access to the private repository or internal runtime
 
 Do not announce the release until the actual HTTPS URL passes the production smoke matrix for routes, assets, MIME types, APIs, headers, traversal denial, prompt-injection refusal, session isolation, browser console/network state, and mobile/desktop behavior.
 

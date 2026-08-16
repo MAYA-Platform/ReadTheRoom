@@ -9,7 +9,7 @@ humor, profanity, corrections, brainstorming, short messages, and tool restraint
 
 One guided session. Zero generic presets. Your AI actually *reads the room.*
 
-> Public Professional v3.4 is a released product. Calibration state is ephemeral and local to the running process. It is not a hosted account service or a production SLA.
+> ReadTheRoom v3.4 is a released product. Calibration state is ephemeral and local to the running process. It is not a hosted account service or a production SLA.
 
 ![ReadTheRoom calibration studio](docs/images/readtheroom-desktop.png)
 
@@ -46,7 +46,7 @@ a default and starts sounding like *yours*.
 
 ## Public API surface
 
-The standalone server exposes only the public calibration application and its documented profile, artifact, archetype, apply, session, and health routes. Internal MAYA runtime files and private profiles are not included.
+The standalone server exposes only the public calibration application and its documented profile, artifact, archetype, apply, session, and health routes. Internal runtime files and private profiles are not included.
 
 ## Verification
 
@@ -74,7 +74,7 @@ Do not expose the development server directly to the internet. Report sensitive 
 
 ## Memory Layer (Memory Lane bridge)
 
-Completed calibration sessions can be sealed into a [Memory Lane](https://github.com/MAYA-Platform/MAYA-Memory-Lane) library — the same tamper-evident, chain-verified, searchable memory layer that powers MAYA and Hermes. A session that lives in a local JSON file today becomes a sealed, chain-linked block you can search, resume, and prove hasn't been altered.
+Completed calibration sessions can be sealed into a [Memory Lane](https://github.com/MAYA-Platform/MAYA-Memory-Lane) library — the same tamper-evident, chain-verified, searchable memory layer that powers MAYA. A session that lives in a local JSON file today becomes a sealed, chain-linked block you can search, resume, and prove hasn't been altered.
 
 ```bash
 node scripts/read-the-room/rtrToMemoryLane.mjs \
@@ -88,7 +88,7 @@ This is the read side of the same loop: Memory Lane collects itself (write) and 
 
 ## License
 
-ReadTheRoom Public Professional is distributed under the MIT License. See [LICENSE.txt](LICENSE.txt) for the full terms.
+ReadTheRoom is distributed under the MIT License. See [LICENSE.txt](LICENSE.txt) for the full terms.
 
 Bundled font files remain governed by their own notices: [OFL-Inter.txt](read-the-room-public-pro/assets/fonts/OFL-Inter.txt) and [OFL-JetBrains-Mono.txt](read-the-room-public-pro/assets/fonts/OFL-JetBrains-Mono.txt).
 
