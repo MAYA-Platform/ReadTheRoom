@@ -56,7 +56,12 @@ function saveLedger(l) {
 
 function sessionToBlock(sid, s) {
   const baseline = s.baseline || {};
-  const bm = s.behaviorMatch || {};
+  const originalMatch = s.behaviorMatch || {};
+  const bm = { ...originalMatch };
+  if (bm.scale && typeof bm.scale === 'object') {
+    bm.scale = { ...bm.scale, note: 'Illustrative heuristic based on supplied lift values, not a measurement of learning or performance.' };
+  }
+  const matchDisclosure = 'Illustrative heuristic based on supplied lift values; not measured learning or performance.';
   const pw = s.profileWrite || {};
   const sig = (s.acceptedSignals || []).map((x) => String(x).slice(0, 120)).join('; ');
   const body = [
@@ -67,7 +72,8 @@ function sessionToBlock(sid, s) {
     `- Baseline prompt: ${baseline.prompt || 'n/a'}`,
     `- Baseline score: ${baseline.score ?? 'n/a'} (source: ${baseline.source || 'n/a'})`,
     `- Timing: ${s.timing?.durationMinutes ?? '?'} min`,
-    `- Behavior match: ${bm.label || bm.summary || JSON.stringify(bm) || 'n/a'}`,
+    `- Behavior match (caller-provided label or values): ${bm.label || bm.summary || JSON.stringify(bm) || 'n/a'}`,
+    `- Behavior match interpretation: ${matchDisclosure}`,
     `- Accepted signals: ${sig || 'none'}`,
     `- Profile write: ${pw.summary || JSON.stringify(pw) || 'n/a'}`,
     s.receipt ? `- Receipt: ${s.receipt.receiptId || s.receipt.id || JSON.stringify(s.receipt).slice(0, 160)}` : '',
@@ -76,8 +82,8 @@ function sessionToBlock(sid, s) {
   const facts = [
     `ReadTheRoom calibration session ${sid} completed with status ${s.status || 'unknown'}`,
     baseline.prompt ? `User's baseline calibration prompt: ${baseline.prompt}` : null,
-    baseline.score != null ? `Baseline score was ${baseline.score} (source ${baseline.source || 'typed'})` : null,
-    bm.label || bm.summary ? `Behavior match result: ${bm.label || bm.summary}` : null,
+    baseline.score != null ? `Illustrative baseline score was ${baseline.score} (source ${baseline.source || 'typed'}); not measured learning or performance` : null,
+    bm.label || bm.summary ? `Caller-provided Behavior match label: ${bm.label || bm.summary}; ${matchDisclosure}` : null,
     sig ? `Accepted calibration signals: ${sig}` : null,
   ].filter(Boolean);
 

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, mkdtempSync, rmSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
@@ -248,4 +248,61 @@ test('calculates real 15-minute timer checkpoints without wall-clock guessing', 
     assert.equal(state.status, status);
     assert.equal(state.remainingMs, Math.max(0, 15 * 60 * 1000 - elapsedMs));
   }
+});
+
+test('heuristic score and receipt disclose caller-supplied lift without changing values', () => {
+  const { store, cleanup } = withTempStore();
+  try {
+    const started = store.startSession({ prompt: 'synthetic calibration', baselineScore: 45 });
+    const choice = store.recordChoice({ sessionId: started.sessionId, questionIndex: 0, label: 'synthetic', lift: 8 });
+    assert.equal(choice.behaviorMatch.current, 48);
+    assert.equal(choice.behaviorMatch.rawLift, 8);
+    for (const match of [started.behaviorMatch, choice.behaviorMatch, store.getSession(started.sessionId).behaviorMatch, store.getReceipt(started.sessionId).behavior_match]) {
+      assert.match(match.interpretation, /caller-supplied lift/);
+      assert.match(match.interpretation, /not measured learning or performance/);
+    }
+    const receipt = store.getReceipt(started.sessionId);
+    assert.equal(receipt.behavior_match.current, 48);
+    assert.equal(receipt.behavior_match.raw_lift, 8);
+  } finally {
+    cleanup();
+  }
+});
+
+
+test('older saved receipts gain a disclosure when read without rewriting stored data', () => {
+  const { store, cleanup } = withTempStore();
+  try {
+    const session = store.startSession({ prompt: 'synthetic legacy' });
+    const stored = JSON.parse(readFileSync(store.filePath, 'utf8'));
+    const legacy = stored.sessions[session.sessionId];
+    delete legacy.behaviorMatch.interpretation;
+    delete legacy.receipt.behavior_match.interpretation;
+    legacy.behaviorMatch.scale.note = 'old earned claim';
+    legacy.receipt.behavior_match.scale.note = 'old earned claim';
+    writeFileSync(store.filePath, JSON.stringify(stored));
+    const before = readFileSync(store.filePath, 'utf8');
+    assert.match(store.getSession(session.sessionId).behaviorMatch.interpretation, /not measured learning/);
+    const receipt = store.getReceipt(session.sessionId);
+    assert.match(receipt.behavior_match.interpretation, /not measured learning/);
+    assert.match(receipt.behavior_match.scale.note, /not a measurement/);
+    assert.equal(receipt.behavior_match.current, 45);
+    assert.equal(readFileSync(store.filePath, 'utf8'), before);
+  } finally { cleanup(); }
+});
+
+
+test('legacy sessions missing behaviorMatch can still be read and return their stored receipt', () => {
+  const { store, cleanup } = withTempStore();
+  try {
+    const session = store.startSession({ prompt: 'synthetic legacy' });
+    const saved = JSON.parse(readFileSync(store.filePath, 'utf8'));
+    delete saved.sessions[session.sessionId].behaviorMatch;
+    saved.sessions[session.sessionId].receipt.behavior_match.scale.note = 'old earned claim';
+    writeFileSync(store.filePath, JSON.stringify(saved));
+    const before = readFileSync(store.filePath, 'utf8');
+    assert.equal(store.getSession(session.sessionId).behaviorMatch, undefined);
+    assert.match(store.getReceipt(session.sessionId).behavior_match.scale.note, /not a measurement/);
+    assert.equal(readFileSync(store.filePath, 'utf8'), before);
+  } finally { cleanup(); }
 });

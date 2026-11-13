@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
+import { createServer } from 'node:http';
+import { mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
+import os from 'node:os';
 import { once } from 'node:events';
 import { test, before, after } from 'node:test';
 import path from 'node:path';
@@ -161,4 +164,72 @@ test('standalone server rejects malformed, oversized, and unsupported requests',
 
   const internalApi = await fetch(`${base}/api/internal/status`);
   assert.equal(internalApi.status, 404);
+});
+
+test('public calibration API discloses the heuristic in session and receipt', async () => {
+  const post = async (payload) => {
+    const response = await fetch(`${base}/api/readtheroom/calibration-session`, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(2000)
+    });
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  const started = await post({ action: 'start', prompt: 'synthetic' });
+  const selected = await post({ action: 'choice', sessionId: started.session.sessionId, questionIndex: 0, lift: 8 });
+  const exported = await post({ action: 'receipt', sessionId: started.session.sessionId });
+  assert.equal(selected.session.behaviorMatch.current, 48);
+  assert.equal(exported.receipt.behavior_match.current, 48);
+  for (const match of [selected.session.behaviorMatch, selected.receipt.behavior_match, exported.receipt.behavior_match]) {
+    assert.match(match.interpretation, /caller-supplied lift/);
+    assert.match(match.interpretation, /not measured learning or performance/);
+  }
+});
+
+
+test('score movement API labels supplied-input scores as illustrative', async () => {
+  const response = await fetch(`${base}/api/readtheroom/score-movement`, {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ baselineScore: 45, rawLift: 8 }), signal: AbortSignal.timeout(2000)
+  });
+  assert.equal(response.status, 200);
+  const { behaviorMatch } = await response.json();
+  assert.equal(behaviorMatch.current, 48);
+  assert.equal(behaviorMatch.scale.method, 'earned_exponential');
+  assert.match(behaviorMatch.interpretation, /caller-supplied lift/);
+  assert.match(behaviorMatch.interpretation, /not measured learning or performance/);
+});
+
+
+test('Memory Lane bridge labels legacy heuristic values and replaces stale scale notes', async () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'rtr-bridge-test-'));
+  let sent;
+  const server = createServer((req, res) => {
+    const chunks = [];
+    req.on('data', (chunk) => chunks.push(chunk));
+    req.on('end', () => {
+      sent = JSON.parse(Buffer.concat(chunks).toString());
+      res.writeHead(200, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, lib_id: 'synthetic', block_id: 'synthetic', sha256: 'synthetic' }));
+    });
+  });
+  try {
+    server.listen(0, '127.0.0.1');
+    await once(server, 'listening');
+    const dir = path.join(root, 'scripts', 'read-the-room');
+    mkdirSync(dir, { recursive: true });
+    const script = path.join(dir, 'rtrToMemoryLane.mjs');
+    copyFileSync(path.join(repoRoot, 'scripts/read-the-room/rtrToMemoryLane.mjs'), script);
+    const store = path.join(root, 'synthetic.json');
+    writeFileSync(store, JSON.stringify({ sessions: { example: { status: 'completed', baseline: { score: 45 }, behaviorMatch: { current: 48, scale: { note: 'old earned claim' } } } } }));
+    const bridge = spawn(process.execPath, [script, '--store', store, '--ml-base', `http://127.0.0.1:${server.address().port}`], { stdio: 'ignore' });
+    const [code] = await Promise.race([once(bridge, 'exit'), new Promise((_, reject) => setTimeout(() => { bridge.kill(); reject(new Error('bridge timeout')); }, 3000))]);
+    assert.equal(code, 0);
+    assert.match(sent.text, /not measured learning or performance/);
+    assert.match(sent.text, /"current":48/);
+    assert.doesNotMatch(sent.text, /old earned claim/);
+    assert.match(sent.facts.join(' '), /Illustrative baseline score/);
+  } finally {
+    server.close();
+    rmSync(root, { recursive: true, force: true });
+  }
 });

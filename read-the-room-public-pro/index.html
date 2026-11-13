@@ -83,7 +83,7 @@
 </div>
 </div>
 <div class="rtr-public-proof-footer">
-<div><span>Behavior match</span><strong>42 → 74</strong></div>
+<div><span>Example match (illustrative)</span><strong>42 → 74</strong></div>
 <div><span>Tool action</span><strong>Held</strong></div>
 <div><span>Profile write</span><strong>Review first</strong></div>
 </div>
@@ -98,7 +98,7 @@
 <div class="rtr-tutorial-step"><small>01</small><b>Speak once, type, or edit the sample.</b><span>MAYA offers a starting prompt, but users can replace it with their real messy prompt. The box grows like a chat composer.</span></div>
 <div class="rtr-tutorial-step"><small>02</small><b>MAYA asks calibration questions.</b><span>She asks what tone, boundary, and memory behavior the user wants before changing anything.</span></div>
 <div class="rtr-tutorial-step"><small>03</small><b>Pick simple options.</b><span>Options adjust response style, tool gates, and whether learning is temporary or reviewed for saving.</span></div>
-<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, behavior match lift, and an exportable local receipt.</span></div>
+<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, an illustrative Behavior Match score, and an exportable local receipt.</span></div>
 </div>
 </section>
 <div aria-label="Live ReadTheRoom calibration cockpit" class="rtr-proof-layout rtr-live-cockpit" id="liveCalibrationCockpit">
@@ -126,11 +126,11 @@
 <div class="rtr-live-rail-head">
 <span>Live calibration</span>
 <b>Session signals</b>
-<p>Behavior lift, learned signals, and save boundaries stay visible while the sprint moves.</p>
+<p>Demo score, selected signals, and save boundaries stay visible while the sprint moves.</p>
 </div>
-<div aria-label="Real-time calibration scale and improvement tracker" class="rtr-live-tracker" data-arrange-id="live-tracker" id="liveCalibrationTracker">
-<div class="rtr-live-meter"><small>Behavior Match</small><b id="liveBehaviorMatchText">45 → 45</b><span class="rtr-live-meter-bar"><i id="liveBehaviorMatchBar"></i></span></div>
-<div class="rtr-live-improvement"><small>Improvement tracker</small><b id="liveImprovementText">0 reps captured</b><span id="liveImprovementDetail">Send a prompt from Start Here to create the first measured before/after.</span></div>
+<div aria-label="Demo calibration scale and activity tracker" class="rtr-live-tracker" data-arrange-id="live-tracker" id="liveCalibrationTracker">
+<div class="rtr-live-meter"><small>Behavior Match · demo heuristic</small><b id="liveBehaviorMatchText">45 → 45</b><span class="rtr-live-meter-bar"><i id="liveBehaviorMatchBar"></i></span><span>Based on preset values, not measured learning or performance.</span></div>
+<div class="rtr-live-improvement"><small>Activity tracker</small><b id="liveImprovementText">0 reps captured</b><span id="liveImprovementDetail">Send a prompt from Start Here to create the first demo comparison.</span></div>
 <div class="rtr-live-improvement"><small>Profile write</small><b>Review first</b><span>Learning remains temporary until the user accepts the receipt.</span></div>
 </div>
 </section>
@@ -200,7 +200,7 @@
 </div>
 </div>
 <div class="rtr-maya-result">
-<div class="rtr-maya-score"><small>Behavior Match</small><b id="mayaScoreText">45 → 45</b><span class="rtr-tight-mini-bar"><i id="mayaScoreBar"></i></span><em class="rtr-score-scale-note">Earned curve: 70+ unlocks only after reviewed calibration choices.</em></div>
+<div class="rtr-maya-score"><small>Behavior Match</small><b id="mayaScoreText">45 → 45</b><span class="rtr-tight-mini-bar"><i id="mayaScoreBar"></i></span><em class="rtr-score-scale-note">Illustrative heuristic based on preset values; not measured learning or performance.</em></div>
 <div class="rtr-maya-changes"><small>What MAYA changed</small><ul id="mayaChangeList"><li>Waiting for your first calibration choice.</li></ul><div class="rtr-maya-complete-actions" hidden="" id="mayaCompleteActions"><button class="rtr-action rtr-action--primary rtr-action--section" id="mayaApplyProofBtn" type="button">Show final proof</button><button class="rtr-action rtr-action--secondary" id="mayaRestartBtn" type="button">Restart walkthrough</button></div></div>
 </div>
 </div>
@@ -209,7 +209,7 @@
 <section aria-label="ReadTheRoom public proof stack" class="rtr-tight-panel rtr-launch-card rtr-after-cockpit-proof" data-arrange-id="public-proof-panel" id="publicProofPanel">
 <span class="rtr-launch-label">Public proof · simple mode</span>
 <h2>See the difference before you save anything.</h2>
-<p>ReadTheRoom keeps the original prompt, the generic response, the calibrated response, and the action boundary together so the improvement is inspectable, not implied.</p>
+<p>ReadTheRoom keeps the original prompt, the generic response, the calibrated response, and the action boundary together so the example comparison is visible.</p>
 <div aria-label="ReadTheRoom simple proof flow" class="rtr-proof-flow">
 <div class="rtr-proof-flow-card"><small>User prompt</small><b id="proofPromptText">I’m frustrated this keeps breaking. Help me fix it without taking over.</b></div>
 <div class="rtr-proof-arrow">→</div>
@@ -218,10 +218,11 @@
 <div class="rtr-proof-flow-card"><small>ReadTheRoom</small><b id="proofCalibratedText">“Yeah, frustrating. We stop the loop, find the failing step, and make the smallest verified fix.”</b></div>
 </div>
 <div aria-label="ReadTheRoom proof metrics" class="rtr-proof-metrics">
-<div class="rtr-proof-item good"><small>Behavior Match</small><b id="proofBehaviorMatchText">42 → 74</b></div>
+<div class="rtr-proof-item good"><small>Behavior Match · illustration</small><b id="proofBehaviorMatchText">42 → 74</b></div>
 <div class="rtr-proof-item good"><small>Tool Boundary</small><b>Held</b></div>
 <div class="rtr-proof-item"><small>Profile Writes</small><b>Review first</b></div>
 </div>
+<p>Behavior Match is an illustrative preset-value heuristic, not measured learning or performance. This example starts at 42 → 74; the final walkthrough display uses a minimum of 74 and may differ from the session receipt.</p>
 <div aria-label="Compact ReadTheRoom receipt preview" class="rtr-receipt-preview">
 <div><small>Intent</small><b>Frustration loop</b></div>
 <div><small>Action gate</small><b>No tool action</b></div>
@@ -229,7 +230,7 @@
 <div><small>Export</small><b>Receipt ready</b></div>
 </div>
 <ul class="rtr-proof-list">
-<li><i>✓</i><span>Baseline is measured before the agent improves.</span></li>
+<li><i>✓</i><span>The example baseline and score are illustrative, not measured improvement.</span></li>
 <li><i>✓</i><span>Intent, tone, correction, and tool gate stay visible in plain English.</span></li>
 <li><i>✓</i><span>Sandbox experiments remain temporary unless the user saves them.</span></li>
 <li><i>✓</i><span>Profile, receipt, ledger, and report remain local/exportable.</span></li>
@@ -239,7 +240,7 @@
 <div class="rtr-understand-grid" data-arrange-id="proof-summary-grid" id="rtr2b-previews">
 <article class="rtr-tight-card active" data-arrange-id="summary-what-changes" data-key="studio" data-preview=""><span class="rtr-tight-tag">What changes</span><h3>Generic in. Calibrated out. Receipt beside it.</h3><p>This is the core story: ReadTheRoom reads the moment, adjusts the response, and keeps action boundaries visible.</p><div class="rtr-tight-proof"><div class="rtr-tight-copy"><small>Generic agent</small><b>“Sure, I’ll rewrite the whole thing and take care of it.”</b></div><div class="rtr-tight-arrow">→</div><div class="rtr-tight-copy calibrated"><small>ReadTheRoom</small><b>“Got it. I’ll keep the wording mostly intact and only tighten what is confusing.”</b></div></div><div class="rtr-signal-summary"><div class="rtr-signal-row success"><b>Intent</b><span>Matched</span></div><div class="rtr-signal-row success"><b>Tool Gate</b><span>Held</span></div></div></article>
 <article class="rtr-tight-card rtr-tight-sandbox" data-arrange-id="summary-sandbox" data-key="sandbox" data-preview=""><span class="rtr-tight-tag">Sandbox mode</span><h3>Temporary behavior tests. Real profile untouched.</h3><p>Users can test tone, humor, and warmth without saving anything to the persistent profile unless they explicitly review and save it.</p><div class="rtr-tight-toggle"><div><b>Sandbox preview is ON</b><p>Temporary only. The answer can be tested without saving to the profile.</p></div><span aria-label="Sandbox preview only, no profile write" class="rtr-sandbox-state">Preview only</span></div><div class="rtr-signal-summary"><div class="rtr-signal-row success"><b>Profile</b><span>Untouched</span></div><div class="rtr-signal-row review"><b>Save</b><span>Review required</span></div></div><p class="rtr-tight-note">Sensitive prompts still override sandbox settings.</p></article>
-<article class="rtr-tight-card" data-arrange-id="summary-local-receipt" data-key="minimal" data-preview=""><span class="rtr-tight-tag">Local receipt</span><h3>What changed, why it changed, and what stayed local.</h3><p>The proof should feel like a receipt, not a settings page. Clear outcome first, technical details second.</p><div aria-label="ReadTheRoom receipt metrics" class="rtr-proof-metrics compact"><div class="rtr-proof-item good"><small>Match</small><b>74</b></div><div class="rtr-proof-item good"><small>Gate</small><b>Held</b></div><div class="rtr-proof-item"><small>Writes</small><b>Review</b></div></div><ul class="rtr-proof-list compact-list"><li><i>✓</i><span>Generic response stayed visible for comparison.</span></li><li><i>✓</i><span>Profile write required review.</span></li><li><i>✓</i><span>Receipt can export locally.</span></li></ul></article>
+<article class="rtr-tight-card" data-arrange-id="summary-local-receipt" data-key="minimal" data-preview=""><span class="rtr-tight-tag">Local receipt</span><h3>What changed, why it changed, and what stayed local.</h3><p>The proof should feel like a receipt, not a settings page. Clear outcome first, technical details second.</p><div aria-label="ReadTheRoom receipt metrics" class="rtr-proof-metrics compact"><div class="rtr-proof-item good"><small>Example match</small><b>74</b></div><div class="rtr-proof-item good"><small>Gate</small><b>Held</b></div><div class="rtr-proof-item"><small>Writes</small><b>Review</b></div></div><ul class="rtr-proof-list compact-list"><li><i>✓</i><span>Generic response stayed visible for comparison.</span></li><li><i>✓</i><span>Profile write required review.</span></li><li><i>✓</i><span>Receipt can export locally.</span></li></ul></article>
 </div>
 <section aria-label="ReadTheRoom technical proof details" class="rtr-technical-proof" data-arrange-id="technical-proof-panel" hidden="" id="technicalProofPanel">
 <div class="rtr-tech-head"><div class="rtr-tech-head-copy"><span class="rtr-tight-tag">Technical proof · developer trace</span><h2>Runtime telemetry, not vibes.</h2><p>Technical mode exposes actual runtime functions: lane and priority, context economy, profile resolver, tool-suggestion policy, response-quality flags, and the public-safe receipt shape.</p></div><button aria-controls="technicalProofPanel" aria-expanded="true" class="rtr-tech-collapse rtr-action rtr-action--quiet" id="technicalCollapseBtn" type="button">Collapse technical proof ↑</button></div>
