@@ -335,7 +335,7 @@
         if (liveBehaviorMatchText) liveBehaviorMatchText.textContent = `45 → ${mayaGuideScore}`;
         if (liveBehaviorMatchBar) liveBehaviorMatchBar.style.width = `${mayaGuideScore}%`;
         if (liveImprovementText) liveImprovementText.textContent = `${sprintRepCount} rep${sprintRepCount === 1 ? '' : 's'} captured`;
-        if (liveImprovementDetail) liveImprovementDetail.textContent = `${lane.label} signal improved the calibrated response. ${laneRemainingCopy(getLaneRemainingMs())}`;
+        if (liveImprovementDetail) liveImprovementDetail.textContent = `${lane.label} demo signal recorded. ${laneRemainingCopy(getLaneRemainingMs())}`;
         flowSteps().forEach((step, index) => step.classList.toggle('done', index <= Math.min(5, sprintRepCount + 1)));
         renderSprintLane();
         renderMayaQuestion();
@@ -343,7 +343,7 @@
         flash($('calibrationSprintWorkbench'));
         flash(publicProof);
         if (sprintFeedbackText) sprintFeedbackText.textContent = sprintFeedbackForLane(lane, getLaneRemainingMs());
-        if (intakeStatus) intakeStatus.textContent = `Rep ${sprintRepCount} captured. Behavior Match is now 45 → ${mayaGuideScore}.`;
+        if (intakeStatus) intakeStatus.textContent = `Rep ${sprintRepCount} captured. Illustrative Behavior Match is now 45 → ${mayaGuideScore}; this is not measured learning.`;
         setSprintProcessing(false);
       };
       const laneRemainingCopy = (remainingMs) => remainingMs <= 45000 ? 'MAYA will offer quick-burst prompts now.' : 'Enough time remains for another rep.';
@@ -448,7 +448,7 @@
         if (done) {
           if (progress) progress.textContent = 'Complete';
           question.textContent = 'That is the calibrated behavior profile for this demo.';
-          hint.textContent = 'MAYA has enough choices to show the improved answer, the held tool gate, and the reviewed learning receipt.';
+          hint.textContent = 'MAYA has enough choices to show the example answer, the held tool gate, and the review receipt.';
           optionList.innerHTML = '';
           setMayaCompleteControls(true);
         } else {
@@ -475,7 +475,7 @@
         mayaGuideChanges.push(selected.change);
         mayaGuideIndex += 1;
         flowSteps().forEach((step, index) => step.classList.toggle('done', index <= Math.min(5, mayaGuideIndex + 1)));
-        if (intakeStatus) intakeStatus.textContent = `MAYA applied: ${selected.label}. Behavior Match is now 45 → ${mayaGuideScore}.`;
+        if (intakeStatus) intakeStatus.textContent = `MAYA applied: ${selected.label}. Illustrative Behavior Match is now 45 → ${mayaGuideScore}; this is not measured learning.`;
         flash($('mayaGuidePanel'));
         renderMayaQuestion();
         recordBackendChoice(selectedQuestionIndex, q, selected);
@@ -518,7 +518,7 @@
       const restartMayaWalkthrough = () => startMayaWalkthrough();
       const downloadReceipt = async () => {
         const receipt = await fetchBackendReceipt();
-        const payload = receipt || { product:'ReadTheRoom', powered_by:'2ndNatureAi', mode:'public-proof-sample', input_mode:'voice_or_locked_sample', prompt:getActivePrompt(), generic_response:$('proofGenericText')?.textContent || '', calibrated_response:$('proofCalibratedText')?.textContent || '', behavior_match:{ baseline:42, calibrated:74 }, tool_boundary:'held', profileWrite:{ state:'review_required', saved:false }, profile_writes:'reviewed-only', receipt:'local_exportable' };
+        const payload = receipt || { product:'ReadTheRoom', powered_by:'2ndNatureAi', mode:'public-proof-sample', input_mode:'voice_or_locked_sample', prompt:getActivePrompt(), generic_response:$('proofGenericText')?.textContent || '', calibrated_response:$('proofCalibratedText')?.textContent || '', behavior_match:{ baseline:42, calibrated:74, interpretation:'Illustrative example values; not measured learning or performance.' }, tool_boundary:'held', profileWrite:{ state:'review_required', saved:false }, profile_writes:'reviewed-only', receipt:'local_exportable' };
         const blob = new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');

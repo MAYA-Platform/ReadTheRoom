@@ -162,3 +162,22 @@ test('standalone server rejects malformed, oversized, and unsupported requests',
   const internalApi = await fetch(`${base}/api/internal/status`);
   assert.equal(internalApi.status, 404);
 });
+
+test('public calibration API discloses the heuristic in session and receipt', async () => {
+  const post = async (payload) => {
+    const response = await fetch(`${base}/api/readtheroom/calibration-session`, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(2000)
+    });
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  const started = await post({ action: 'start', prompt: 'synthetic' });
+  const selected = await post({ action: 'choice', sessionId: started.session.sessionId, questionIndex: 0, lift: 8 });
+  const exported = await post({ action: 'receipt', sessionId: started.session.sessionId });
+  assert.equal(selected.session.behaviorMatch.current, 48);
+  assert.equal(exported.receipt.behavior_match.current, 48);
+  for (const match of [selected.session.behaviorMatch, selected.receipt.behavior_match, exported.receipt.behavior_match]) {
+    assert.match(match.interpretation, /caller-supplied lift/);
+    assert.match(match.interpretation, /not measured learning or performance/);
+  }
+});

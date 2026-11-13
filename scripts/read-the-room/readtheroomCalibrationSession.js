@@ -6,6 +6,7 @@ export const READTHEROOM_CALIBRATION_SESSION_VERSION = 'readtheroom_calibration_
 export const READTHEROOM_CALIBRATION_STORE_VERSION = 'readtheroom_calibration_session_store_v0_1';
 
 const DEFAULT_BASELINE_SCORE = 45;
+const BEHAVIOR_MATCH_DISCLOSURE = 'Illustrative heuristic based on caller-supplied lift values (preset values in the demo); not measured learning or performance.';
 const DEFAULT_DURATION_MINUTES = 15;
 const CHECKPOINT_MINUTES = [0, 3, 6, 9, 12, 15];
 const CHECKPOINT_LABELS = new Map([
@@ -22,7 +23,7 @@ export const READTHEROOM_BEHAVIOR_MATCH_SCALE = Object.freeze({
   exponent: 1.65,
   expectedRawLift: 35,
   targetScore: 74,
-  note: 'Behavior Match is an earned 1-100 curve; early choices move slowly and 70+ requires reviewed calibration progress.'
+  note: 'Illustrative heuristic based on supplied lift values, not a measurement of learning or performance.'
 });
 
 function clampScore(value, fallback = DEFAULT_BASELINE_SCORE) {
@@ -163,6 +164,7 @@ function buildReceipt(session) {
       current: session.behaviorMatch.current,
       delta: session.behaviorMatch.current - session.behaviorMatch.baseline,
       raw_lift: session.behaviorMatch.rawLift || 0,
+      interpretation: BEHAVIOR_MATCH_DISCLOSURE,
       scale: session.behaviorMatch.scale || READTHEROOM_BEHAVIOR_MATCH_SCALE
     },
     reviewed_choices: session.reviewedChoices.map((choice) => ({
@@ -215,7 +217,7 @@ export function buildReadTheRoomCalibrationSessionContract() {
       sessionId: 'stable local session id',
       timing: '15-minute calibration checkpoints and reload-safe timestamps',
       reviewedChoices: 'user-selected calibration choices; profile save still requires review',
-      behaviorMatch: 'baseline/current/delta score state',
+      behaviorMatch: 'illustrative heuristic from caller-supplied lift, not measured learning or performance',
       toolGate: 'held by default until explicit action',
       profileWrite: 'review_required and saved:false until explicit save gate',
       voiceTranscript: 'text stored only when allowTranscriptCapture is true',
@@ -309,7 +311,15 @@ export function createReadTheRoomCalibrationStore(options = {}) {
     const id = safeSessionId(sessionId);
     if (!id) return null;
     const session = readStore().sessions[id] || null;
-    return session ? clone(session) : null;
+    if (!session) return null;
+    const result = clone(session);
+    result.behaviorMatch.interpretation = BEHAVIOR_MATCH_DISCLOSURE;
+    if (result.behaviorMatch.scale) result.behaviorMatch.scale.note = READTHEROOM_BEHAVIOR_MATCH_SCALE.note;
+    if (result.receipt?.behavior_match) {
+      result.receipt.behavior_match.interpretation = BEHAVIOR_MATCH_DISCLOSURE;
+      if (result.receipt.behavior_match.scale) result.receipt.behavior_match.scale.note = READTHEROOM_BEHAVIOR_MATCH_SCALE.note;
+    }
+    return result;
   }
 
   function startSession(payload = {}) {
@@ -346,6 +356,7 @@ export function createReadTheRoomCalibrationStore(options = {}) {
         current: behaviorMatch.current,
         delta: behaviorMatch.delta,
         rawLift: behaviorMatch.rawLift,
+        interpretation: BEHAVIOR_MATCH_DISCLOSURE,
         scale: behaviorMatch.scale
       },
       toolGate: {
