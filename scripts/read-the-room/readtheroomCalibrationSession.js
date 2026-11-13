@@ -134,6 +134,7 @@ export function calculateReadTheRoomBehaviorMatchScore(options = {}) {
     rawLift: Math.round(rawLift * 100) / 100,
     ratio: Math.round(ratio * 1000) / 1000,
     curvedRatio: Math.round(curvedRatio * 1000) / 1000,
+    interpretation: BEHAVIOR_MATCH_DISCLOSURE,
     scale: {
       ...READTHEROOM_BEHAVIOR_MATCH_SCALE,
       baselineScore: baseline,
@@ -313,11 +314,10 @@ export function createReadTheRoomCalibrationStore(options = {}) {
     const session = readStore().sessions[id] || null;
     if (!session) return null;
     const result = clone(session);
-    result.behaviorMatch.interpretation = BEHAVIOR_MATCH_DISCLOSURE;
-    if (result.behaviorMatch.scale) result.behaviorMatch.scale.note = READTHEROOM_BEHAVIOR_MATCH_SCALE.note;
-    if (result.receipt?.behavior_match) {
-      result.receipt.behavior_match.interpretation = BEHAVIOR_MATCH_DISCLOSURE;
-      if (result.receipt.behavior_match.scale) result.receipt.behavior_match.scale.note = READTHEROOM_BEHAVIOR_MATCH_SCALE.note;
+    for (const match of [result.behaviorMatch, result.receipt?.behavior_match]) {
+      if (!match || typeof match !== 'object') continue;
+      match.interpretation = BEHAVIOR_MATCH_DISCLOSURE;
+      if (match.scale && typeof match.scale === 'object') match.scale.note = READTHEROOM_BEHAVIOR_MATCH_SCALE.note;
     }
     return result;
   }

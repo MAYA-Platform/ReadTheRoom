@@ -290,3 +290,19 @@ test('older saved receipts gain a disclosure when read without rewriting stored 
     assert.equal(readFileSync(store.filePath, 'utf8'), before);
   } finally { cleanup(); }
 });
+
+
+test('legacy sessions missing behaviorMatch can still be read and return their stored receipt', () => {
+  const { store, cleanup } = withTempStore();
+  try {
+    const session = store.startSession({ prompt: 'synthetic legacy' });
+    const saved = JSON.parse(readFileSync(store.filePath, 'utf8'));
+    delete saved.sessions[session.sessionId].behaviorMatch;
+    saved.sessions[session.sessionId].receipt.behavior_match.scale.note = 'old earned claim';
+    writeFileSync(store.filePath, JSON.stringify(saved));
+    const before = readFileSync(store.filePath, 'utf8');
+    assert.equal(store.getSession(session.sessionId).behaviorMatch, undefined);
+    assert.match(store.getReceipt(session.sessionId).behavior_match.scale.note, /not a measurement/);
+    assert.equal(readFileSync(store.filePath, 'utf8'), before);
+  } finally { cleanup(); }
+});
