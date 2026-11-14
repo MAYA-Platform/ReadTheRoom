@@ -695,19 +695,30 @@
     shell.dataset.calibrationMode = quick ? 'quick' : 'full';
     quickBtn?.classList.toggle('is-active', quick);
     fullBtn?.classList.toggle('is-active', !quick);
-    quickBtn?.setAttribute('aria-selected', String(quick));
-    fullBtn?.setAttribute('aria-selected', String(!quick));
-    if (startBtn) startBtn.textContent = quick ? 'Run the 60-second proof' : 'Start the 15-minute calibration';
-    if (runBtn) runBtn.textContent = quick ? 'Run quick proof' : 'Start calibration session';
-    if (modeTag) modeTag.textContent = quick ? 'Quick proof · one-prompt mode' : '15-minute calibration';
+    quickBtn?.setAttribute('aria-checked', String(quick));
+    fullBtn?.setAttribute('aria-checked', String(!quick));
+    quickBtn?.setAttribute('tabindex', quick ? '0' : '-1');
+    fullBtn?.setAttribute('tabindex', quick ? '-1' : '0');
+    if (startBtn) startBtn.textContent = quick ? 'Try a conversation' : 'Start guided calibration';
+    if (runBtn) runBtn.textContent = quick ? 'Run comparison' : 'Start calibration session';
+    if (modeTag) modeTag.textContent = quick ? 'Quick comparison · one-prompt mode' : '15-minute calibration';
     if (modeNote) modeNote.textContent = quick
-      ? 'One prompt, one preference, one visible before/after. Nothing is saved without review.'
+      ? 'One prompt, one preference, one visible before/after. Profile changes require review.'
       : 'A guided six-stage calibration for intent, tone, correction handling, tool boundaries, and review.';
     try { localStorage.setItem('readtheroom-public-calibration-mode', quick ? 'quick' : 'full'); } catch {}
   };
 
   quickBtn?.addEventListener('click', () => setMode('quick'));
   fullBtn?.addEventListener('click', () => setMode('full'));
+  for (const button of [quickBtn, fullBtn]) {
+    button?.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const quick = event.key === 'Home' || (event.key !== 'End' && button === fullBtn);
+      setMode(quick ? 'quick' : 'full');
+      (quick ? quickBtn : fullBtn)?.focus();
+    });
+  }
   panelFullBtn?.addEventListener('click', () => {
     setMode('full');
     byId('calibrationTimeline')?.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -719,6 +730,8 @@
   const lens = byId('responseContextLens');
   const defaultBtn = byId('proofDefaultViewBtn');
   const calibratedBtn = byId('proofCalibratedViewBtn');
+  const defaultPanel = byId('heroDefaultPanel');
+  const calibratedPanel = byId('heroCalibratedPanel');
   const setProofView = (view) => {
     const calibrated = view !== 'default';
     shell.dataset.proofView = calibrated ? 'calibrated' : 'default';
@@ -727,9 +740,22 @@
     calibratedBtn?.classList.toggle('is-active', calibrated);
     defaultBtn?.setAttribute('aria-selected', String(!calibrated));
     calibratedBtn?.setAttribute('aria-selected', String(calibrated));
+    defaultBtn?.setAttribute('tabindex', calibrated ? '-1' : '0');
+    calibratedBtn?.setAttribute('tabindex', calibrated ? '0' : '-1');
+    defaultPanel?.setAttribute('aria-hidden', String(calibrated));
+    calibratedPanel?.setAttribute('aria-hidden', String(!calibrated));
   };
   defaultBtn?.addEventListener('click', () => setProofView('default'));
   calibratedBtn?.addEventListener('click', () => setProofView('calibrated'));
+  for (const button of [defaultBtn, calibratedBtn]) {
+    button?.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const showDefault = event.key === 'Home' || (event.key !== 'End' && button === calibratedBtn);
+      setProofView(showDefault ? 'default' : 'calibrated');
+      (showDefault ? defaultBtn : calibratedBtn)?.focus();
+    });
+  }
   setProofView('calibrated');
 
   if (lens && !matchMedia('(prefers-reduced-motion: reduce)').matches) {

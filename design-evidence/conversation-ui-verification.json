@@ -1,0 +1,13 @@
+{
+  "base": "ccf296c45a2ab7c51672a155f63b33d6dbb5a811",
+  "original_ids_preserved": 92,
+  "original_classes_preserved": 159,
+  "javascript_identical_to_base": true,
+  "javascript_sha256": "0b05aef1315b25883fb52b1605504bda615286e922efa065d9555d7aed3b8096",
+  "desktop_browser_width": 1331,
+  "desktop_scroll_width": 1316,
+  "keyboard_before_tab_enter_selected": true,
+  "synthetic_comparison_result": "I\u2019ll identify what you actually want first, answer directly, and ask before taking over or widening the task.",
+  "mobile_browser_test": "Not run: supported CUA API has no viewport resizing method. Responsive CSS reviewed, not device-verified.",
+  "voice_test": "Not run: no microphone transmission requested. Voice script and disclosure preserved."
+}
