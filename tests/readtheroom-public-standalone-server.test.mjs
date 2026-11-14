@@ -59,7 +59,7 @@ test('standalone server serves only the public product tree with correct MIME ty
   const page = await fetch(`${base}/read-the-room-public-pro-v3-4/`);
   assert.equal(page.status, 200);
   assert.match(page.headers.get('content-type') || '', /^text\/html/);
-  assert.match(await page.text(), /Teach your AI to read the room/i);
+  assert.match(await page.text(), /Read the moment/i);
 
   const font = await fetch(`${base}/read-the-room-public-pro/assets/fonts/inter-latin-wght-normal.woff2`);
   assert.equal(font.status, 200);

@@ -1,0 +1,56 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> readtheroom-public-professional@3.4.0 test
+> node --test tests/public-vocabulary-boundary.test.mjs tests/readtheroom-calibration-session.test.mjs tests/readtheroom-public-pro-v34-ui.test.mjs tests/readtheroom-public-standalone-server.test.mjs tests/readtheroom-public-release-config.test.mjs
+
+✔ public source tree excludes non-public vocabulary (186.919522ms)
+✔ starts a backend-backed calibration session with review gates and reload-safe schema (5.417899ms)
+✔ default public session IDs include at least 128 bits of random entropy (1.499991ms)
+✔ public stores ignore caller-supplied session IDs instead of allowing session overwrite (1.043263ms)
+✔ memory-only public stores bound session count and expire stale sessions (4.990004ms)
+✔ public stores cap distinct reviewed choices per session while allowing an existing choice to be revised (3.683493ms)
+✔ memory-only public calibration sessions never write prompt data to disk (0.799215ms)
+✔ persists reviewed choices locally and updates the exportable receipt without saving a profile (1.188212ms)
+✔ Behavior Match uses an earned exponential 1-100 curve instead of instant-good jumps (0.319952ms)
+✔ does not persist voice transcript text unless capture permission is explicit (1.148772ms)
+✔ calculates real 15-minute timer checkpoints without wall-clock guessing (1.009162ms)
+✔ heuristic score and receipt disclose caller-supplied lift without changing values (1.967496ms)
+✔ older saved receipts gain a disclosure when read without rewriting stored data (1.336235ms)
+✔ legacy sessions missing behaviorMatch can still be read and return their stored receipt (1.116814ms)
+{
+  "ok": true,
+  "route": "/read-the-room-public-pro-v3-4/",
+  "duplicateIds": 0,
+  "requiredInteractions": 13,
+  "stylesheetCount": 1,
+  "scriptCount": 1
+}
+✔ tests/readtheroom-public-pro-v34-ui.test.mjs (105.487415ms)
+✔ public release config is a focused explicit allowlist (2.34106ms)
+✔ packaged runtime source excludes non-public identity and profile-discovery markers (1.589417ms)
+✔ every public product asset is intentionally mapped (2.027918ms)
+✔ runtime package is dependency-free and starts only the standalone server (0.453845ms)
+✔ runtime package carries the MIT license plus third-party font licenses (0.478221ms)
+✔ release capability matrix separates local package readiness from deployed HTTPS readiness (0.279191ms)
+✔ standalone health response is minimal and carries hardened headers (128.578709ms)
+✔ standalone server serves only the public product tree with correct MIME types (13.40421ms)
+✔ standalone calibration ignores caller-selected IDs and keeps sessions capability-scoped (8.653667ms)
+✔ standalone calibration caps cumulative distinct choices per session (123.403037ms)
+✔ standalone apply endpoint refuses direct, encoded, translated, and pluralized private-instruction extraction (13.19232ms)
+✔ standalone server rejects malformed, oversized, and unsupported requests (3.00416ms)
+✔ public calibration API discloses the heuristic in session and receipt (5.671181ms)
+✔ score movement API labels supplied-input scores as illustrative (1.273229ms)
+✔ Memory Lane bridge labels legacy heuristic values and replaces stale scale notes (84.859183ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3451.336579
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

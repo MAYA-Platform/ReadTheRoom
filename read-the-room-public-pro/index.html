@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Teach your AI to read the room with reviewable behavior calibration, action restraint, and local proof.">
+  <meta name="description" content="Explore a reviewable response-style demo from 2ndNatureAi. Compare examples, adjust preferences, and inspect a session receipt.">
   <title>ReadTheRoom · Context Before Response</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/read-the-room-public-pro/readtheroom-public-pro.css">
@@ -15,61 +15,62 @@
 <div class="rtr-tight-top rtr-topbar" data-arrange-id="top-nav">
 <div class="rtr-tight-brand">
 <div aria-label="MAYA profile mark" class="rtr-tight-sigil"><span>M</span></div>
-<div><b>ReadTheRoom</b><span>Context before response · private by default</span></div>
+<div><b>ReadTheRoom</b><span>A 2ndNatureAi experience</span></div>
 </div>
-<nav aria-label="ReadTheRoom page navigation" class="rtr-tight-links"><a href="#tutorialPanel">How it works</a><a href="#liveCalibrationCockpit">Live demo</a><a href="#publicProofPanel">Proof</a><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-link-button" id="technicalProofBtn" type="button">Technical</button><button class="rtr-nav-button rtr-action rtr-action--nav" id="navStartBtn" type="button">Try it</button></nav>
+<nav aria-label="ReadTheRoom page navigation" class="rtr-tight-links"><a href="#tutorialPanel">How it works</a><a href="#liveCalibrationCockpit">Live demo</a><a href="#publicProofPanel">Comparison</a><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-link-button" id="technicalProofBtn" type="button">Technical</button><button class="rtr-nav-button rtr-action rtr-action--nav" id="navStartBtn" type="button">Try it</button></nav>
 </div>
 <section aria-labelledby="rtrPublicHeadline" class="rtr-tight-hero rtr-hero" data-arrange-id="hero-section">
 <div>
-<div class="rtr-tight-kicker">Local preview · context before response</div>
-<h1 id="rtrPublicHeadline">Teach your AI to read <em>the room.</em></h1>
-<p class="rtr-tight-lead"><strong>ReadTheRoom calibrates tone, brevity, correction handling, and tool restraint before an agent responds.</strong> Test one real prompt, compare the generic and calibrated answers, and review exactly what would change before anything is saved or acted on.</p><div aria-label="Choose calibration depth" class="rtr-mode-switch-wrap">
+<div class="rtr-tight-kicker">READTHEROOM / INTERACTIVE PREVIEW</div>
+<h1 id="rtrPublicHeadline">Read the moment.<em>Then respond.</em></h1>
+<p class="rtr-tight-lead">Less explaining yourself. More getting somewhere. Explore how tone, brevity, and boundaries can shape a response. Start with a situation, make a few choices, and compare the examples.</p><div aria-label="Choose calibration depth" class="rtr-mode-switch-wrap">
 <div aria-label="Calibration mode" class="rtr-mode-switch" role="tablist">
 <button aria-selected="true" class="is-active rtr-toggle__option rtr-option-card" id="quickProofModeBtn" role="tab" type="button">
-<span>Quick proof</span><small>About 60 seconds</small>
+<span>Quick comparison</span><small>About 60 seconds</small>
 </button>
 <button aria-selected="false" class="rtr-toggle__option rtr-option-card" id="fullCalibrationModeBtn" role="tab" type="button">
-<span>Full calibration</span><small>About 15 minutes</small>
+<span>Guided calibration</span><small>About 15 minutes</small>
 </button>
 </div>
 <p class="rtr-mode-note" id="calibrationModeNote">One prompt, one preference, one visible before/after. Nothing is saved without review.</p>
 </div>
-<div class="rtr-tight-actions"><button class="rtr-tight-btn rtr-primary-action rtr-action rtr-action--primary" data-magnetic="true" id="startCalibrationBtn" type="button">Run the 60-second proof</button><button class="rtr-tight-btn secondary rtr-action rtr-action--secondary" id="seeProofBtn" type="button">See the behavior change</button><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-btn secondary rtr-technical-link rtr-text-action rtr-action rtr-action--quiet" id="technicalInlineBtn" type="button">Technical details</button></div>
+<div class="rtr-tight-actions"><button class="rtr-tight-btn rtr-primary-action rtr-action rtr-action--primary" data-magnetic="true" id="startCalibrationBtn" type="button">Try a conversation</button><button class="rtr-tight-btn secondary rtr-action rtr-action--secondary" id="seeProofBtn" type="button">Compare responses</button><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-btn secondary rtr-technical-link rtr-text-action rtr-action rtr-action--quiet" id="technicalInlineBtn" type="button">Technical details</button></div>
 <div aria-label="ReadTheRoom live status strip" class="rtr-tight-status rtr-status-inline">
 <span><strong>Private session</strong> Processed only for this session, not retained to disk</span>
-<span><strong>Review before learning</strong> Nothing becomes behavior silently</span>
+<span><strong>Review before saving</strong> Preferences stay yours to inspect</span>
 <span><strong>Action stays gated</strong> Tools remain held until the user asks</span>
 </div>
 </div>
 <aside aria-label="ReadTheRoom example behavior proof" class="rtr-tight-side rtr-public-proof-stage" data-arrange-id="hero-proof">
 <div class="rtr-proof-stage-head">
 <div>
-<div class="rtr-public-proof-kicker">Interactive behavior proof</div>
-<h2>Same prompt. Different judgment.</h2>
+<div class="rtr-public-proof-kicker">ONE SITUATION / TWO RESPONSES</div>
+<h2>The difference is in the response.</h2>
 </div>
 <div aria-label="Compare generic and calibrated responses" class="rtr-proof-toggle" role="tablist">
-<button aria-selected="false" class="rtr-toggle__option" id="proofDefaultViewBtn" role="tab" type="button">Default AI</button>
-<button aria-selected="true" class="is-active rtr-toggle__option" id="proofCalibratedViewBtn" role="tab" type="button">ReadTheRoom</button>
+<button aria-selected="false" class="rtr-toggle__option" id="proofDefaultViewBtn" role="tab" type="button">Before</button>
+<button aria-selected="true" class="is-active rtr-toggle__option" id="proofCalibratedViewBtn" role="tab" type="button">After</button>
 </div>
 </div>
+<div class="rtr-example-prompt"><span>The situation</span><p>“I’m frustrated this keeps breaking. Help me fix it without taking over.”</p></div>
 <div aria-label="Interactive response comparison" class="rtr-response-lens" data-view="calibrated" id="responseContextLens" tabindex="0">
 <div aria-hidden="true" class="rtr-lens-glow"></div>
 <div class="rtr-response-view is-default" data-proof-panel="default">
-<small>Generic response</small>
+<small>Before · generic example</small>
 <p id="heroGenericResponse">“I understand this is frustrating. Let’s go through the issue step by step.”</p>
 </div>
 <div class="rtr-response-view is-calibrated" data-proof-panel="calibrated">
-<small>ReadTheRoom calibrated</small>
+<small>After · preference-shaped example</small>
 <p id="heroCalibratedResponse">“Yeah, frustrating. Let’s stop the loop, find the failing step, and make the smallest verified fix.”</p>
 </div>
 <div class="rtr-lens-caption">
 <span class="rtr-lens-dot"></span>
-    Move across the response to inspect the context lens
+    Switch between Before and After to compare
   </div>
 </div>
 <div class="rtr-why-grid">
 <div class="rtr-why-changed">
-<span>Why it changed</span>
+<span>What to notice</span>
 <ul>
 <li>Acknowledges frustration without over-apologizing</li>
 <li>Moves to one concrete next step</li>
@@ -82,24 +83,13 @@
 <p>Nothing was sent, changed, saved, or executed.</p>
 </div>
 </div>
+<p class="rtr-demo-disclosure">Illustrative demo: responses and scores use preset rules. They are not evidence of model training, learning, or measured performance.</p>
 <div class="rtr-public-proof-footer">
-<div><span>Example match (illustrative)</span><strong>42 → 74</strong></div>
+<div><span>Illustrative match</span><strong>42 → 74</strong></div>
 <div><span>Tool action</span><strong>Held</strong></div>
 <div><span>Profile write</span><strong>Review first</strong></div>
 </div>
 </aside>
-</section>
-<section aria-label="How ReadTheRoom works tutorial" class="rtr-tutorial-panel" data-arrange-id="tutorial-panel" id="tutorialPanel">
-<div class="rtr-tutorial-head">
-<div><span class="rtr-tight-tag">How it works</span><h2>One prompt. Four choices. A visible before-and-after.</h2><p>No prompt-engineering lesson and no hidden personality rewrite. ReadTheRoom asks plain-language questions, previews the result, and keeps saving behind explicit review.</p></div>
-<button class="rtr-tight-btn secondary rtr-tutorial-action rtr-action rtr-action--secondary" id="startTutorialBtn" type="button">Start guided demo</button>
-</div>
-<div class="rtr-tutorial-grid">
-<div class="rtr-tutorial-step"><small>01</small><b>Speak once, type, or edit the sample.</b><span>MAYA offers a starting prompt, but users can replace it with their real messy prompt. The box grows like a chat composer.</span></div>
-<div class="rtr-tutorial-step"><small>02</small><b>MAYA asks calibration questions.</b><span>She asks what tone, boundary, and memory behavior the user wants before changing anything.</span></div>
-<div class="rtr-tutorial-step"><small>03</small><b>Pick simple options.</b><span>Options adjust response style, tool gates, and whether learning is temporary or reviewed for saving.</span></div>
-<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, an illustrative Behavior Match score, and an exportable local receipt.</span></div>
-</div>
 </section>
 <div aria-label="Live ReadTheRoom calibration cockpit" class="rtr-proof-layout rtr-live-cockpit" id="liveCalibrationCockpit">
 <div class="rtr-cockpit-left">
@@ -168,7 +158,7 @@
 </div>
 <div aria-label="Default versus ReadTheRoom calibration result" class="rtr-sprint-compare">
 <div class="rtr-sprint-output"><small>Default response</small><b id="sprintGenericOutput">Send a prompt to see the generic baseline.</b></div>
-<div class="rtr-sprint-output calibrated"><small>ReadTheRoom calibrated</small><b id="sprintCalibratedOutput">MAYA will tune this after each rep and show the score movement.</b></div>
+<div class="rtr-sprint-output calibrated"><small>After · preference-shaped example</small><b id="sprintCalibratedOutput">MAYA will tune this after each rep and show the score movement.</b></div>
 </div>
 <div class="rtr-live-explainer" id="liveExplainer">
 <div>
@@ -206,6 +196,18 @@
 </div>
 </section>
 </div>
+<section aria-label="How ReadTheRoom works tutorial" class="rtr-tutorial-panel" data-arrange-id="tutorial-panel" id="tutorialPanel">
+<div class="rtr-tutorial-head">
+<div><span class="rtr-tight-tag">How it works</span><h2>One prompt. Four choices. A visible before-and-after.</h2><p>No prompt-engineering lesson and no hidden personality rewrite. ReadTheRoom asks plain-language questions, previews the result, and keeps saving behind explicit review.</p></div>
+<button class="rtr-tight-btn secondary rtr-tutorial-action rtr-action rtr-action--secondary" id="startTutorialBtn" type="button">Start guided demo</button>
+</div>
+<div class="rtr-tutorial-grid">
+<div class="rtr-tutorial-step"><small>01</small><b>Speak once, type, or edit the sample.</b><span>MAYA offers a starting prompt, but users can replace it with their real messy prompt. The box grows like a chat composer.</span></div>
+<div class="rtr-tutorial-step"><small>02</small><b>MAYA asks calibration questions.</b><span>She asks what tone, boundary, and memory behavior the user wants before changing anything.</span></div>
+<div class="rtr-tutorial-step"><small>03</small><b>Pick simple options.</b><span>Options adjust response style, tool gates, and whether learning is temporary or reviewed for saving.</span></div>
+<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, an illustrative Behavior Match score, and an exportable local receipt.</span></div>
+</div>
+</section>
 <section aria-label="ReadTheRoom public proof stack" class="rtr-tight-panel rtr-launch-card rtr-after-cockpit-proof" data-arrange-id="public-proof-panel" id="publicProofPanel">
 <span class="rtr-launch-label">Public proof · simple mode</span>
 <h2>See the difference before you save anything.</h2>
@@ -283,7 +285,7 @@
 }</pre>
 </div>
 </section>
-<footer aria-label="ReadTheRoom footer" class="rtr-tight-footer" data-arrange-id="footer-bar"><span>ReadTheRoom · Context Before Response</span><strong>Powered by 2ndNatureAi</strong><span>Voice-first behavior calibration · private by default</span></footer>
+<footer aria-label="ReadTheRoom footer" class="rtr-tight-footer" data-arrange-id="footer-bar"><span>ReadTheRoom · Context Before Response</span><strong>2ndNature<span class="rtr-brand-accent">Ai</span></strong><span>Your context. Your boundaries. Your choice.</span></footer>
 </div>
   </section>
 </body>
