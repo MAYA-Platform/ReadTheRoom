@@ -697,6 +697,8 @@
     fullBtn?.classList.toggle('is-active', !quick);
     quickBtn?.setAttribute('aria-selected', String(quick));
     fullBtn?.setAttribute('aria-selected', String(!quick));
+    quickBtn?.setAttribute('tabindex', quick ? '0' : '-1');
+    fullBtn?.setAttribute('tabindex', quick ? '-1' : '0');
     if (startBtn) startBtn.textContent = quick ? 'Try a conversation' : 'Start guided calibration';
     if (runBtn) runBtn.textContent = quick ? 'Run comparison' : 'Start calibration session';
     if (modeTag) modeTag.textContent = quick ? 'Quick comparison · one-prompt mode' : '15-minute calibration';
@@ -708,6 +710,15 @@
 
   quickBtn?.addEventListener('click', () => setMode('quick'));
   fullBtn?.addEventListener('click', () => setMode('full'));
+  for (const button of [quickBtn, fullBtn]) {
+    button?.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const quick = event.key === 'Home' || (event.key !== 'End' && button === fullBtn);
+      setMode(quick ? 'quick' : 'full');
+      (quick ? quickBtn : fullBtn)?.focus();
+    });
+  }
   panelFullBtn?.addEventListener('click', () => {
     setMode('full');
     byId('calibrationTimeline')?.scrollIntoView({ behavior:'smooth', block:'start' });
