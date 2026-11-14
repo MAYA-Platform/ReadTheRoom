@@ -1,5 +1,13 @@
 # Conversation-led public app pass
 
+## Follow-up review
+
+The original Maya Cloud design evidence below describes her delivered patch,
+not later follow-up changes. Codex updated mode labels so initialization no
+longer resets them to “proof”, and added selected-panel accessibility state
+and keyboard navigation for the comparison. See the repository tests for the
+current revision. Mobile browser and screen-reader verification remain open.
+
 Source: public MAYA-Platform/ReadTheRoom at ccf296c45a2ab7c51672a155f63b33d6dbb5a811.
 Scope: actual public HTML/CSS, related literal-copy/design assertions. No runtime JS, policy engine, API, voice implementation, security, private source, or Evolve² changes.
 

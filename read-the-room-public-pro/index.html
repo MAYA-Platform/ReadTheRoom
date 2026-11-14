@@ -41,25 +41,25 @@
 <span><strong>Action stays gated</strong> Tools remain held until the user asks</span>
 </div>
 </div>
-<aside aria-label="ReadTheRoom example behavior proof" class="rtr-tight-side rtr-public-proof-stage" data-arrange-id="hero-proof">
+<aside aria-label="Illustrative response comparison" class="rtr-tight-side rtr-public-proof-stage" data-arrange-id="hero-proof">
 <div class="rtr-proof-stage-head">
 <div>
 <div class="rtr-public-proof-kicker">ONE SITUATION / TWO RESPONSES</div>
 <h2>The difference is in the response.</h2>
 </div>
 <div aria-label="Compare generic and calibrated responses" class="rtr-proof-toggle" role="tablist">
-<button aria-selected="false" class="rtr-toggle__option" id="proofDefaultViewBtn" role="tab" type="button">Before</button>
-<button aria-selected="true" class="is-active rtr-toggle__option" id="proofCalibratedViewBtn" role="tab" type="button">After</button>
+<button aria-controls="heroDefaultPanel" aria-selected="false" class="rtr-toggle__option" id="proofDefaultViewBtn" role="tab" tabindex="-1" type="button">Before</button>
+<button aria-controls="heroCalibratedPanel" aria-selected="true" class="is-active rtr-toggle__option" id="proofCalibratedViewBtn" role="tab" tabindex="0" type="button">After</button>
 </div>
 </div>
 <div class="rtr-example-prompt"><span>The situation</span><p>“I’m frustrated this keeps breaking. Help me fix it without taking over.”</p></div>
 <div aria-label="Interactive response comparison" class="rtr-response-lens" data-view="calibrated" id="responseContextLens" tabindex="0">
 <div aria-hidden="true" class="rtr-lens-glow"></div>
-<div class="rtr-response-view is-default" data-proof-panel="default">
+<div aria-hidden="true" aria-labelledby="proofDefaultViewBtn" class="rtr-response-view is-default" data-proof-panel="default" id="heroDefaultPanel" role="tabpanel">
 <small>Before · generic example</small>
 <p id="heroGenericResponse">“I understand this is frustrating. Let’s go through the issue step by step.”</p>
 </div>
-<div class="rtr-response-view is-calibrated" data-proof-panel="calibrated">
+<div aria-hidden="false" aria-labelledby="proofCalibratedViewBtn" class="rtr-response-view is-calibrated" data-proof-panel="calibrated" id="heroCalibratedPanel" role="tabpanel">
 <small>After · preference-shaped example</small>
 <p id="heroCalibratedResponse">“Yeah, frustrating. Let’s stop the loop, find the failing step, and make the smallest verified fix.”</p>
 </div>
@@ -100,7 +100,7 @@
 </div>
 <div class="rtr-input-shell">
 <textarea aria-label="Editable calibration prompt for ReadTheRoom" id="rtrPromptInput" spellcheck="true">I’m frustrated this keeps breaking. Help me fix it without taking over.</textarea>
-<div class="rtr-input-actions"><button class="rtr-mini-action voice rtr-action rtr-action--secondary" id="voicePromptBtn" type="button">Speak</button><button class="rtr-mini-action rtr-action rtr-action--secondary" id="samplePromptBtn" type="button">Use example</button><button class="rtr-mini-action rtr-action rtr-action--primary rtr-action--section" data-magnetic="true" id="analyzePromptBtn" type="button">Run quick proof</button></div>
+<div class="rtr-input-actions"><button class="rtr-mini-action voice rtr-action rtr-action--secondary" id="voicePromptBtn" type="button">Speak</button><button class="rtr-mini-action rtr-action rtr-action--secondary" id="samplePromptBtn" type="button">Use example</button><button class="rtr-mini-action rtr-action rtr-action--primary rtr-action--section" data-magnetic="true" id="analyzePromptBtn" type="button">Run comparison</button></div>
 <div class="rtr-voice-privacy-note"><strong>Voice privacy</strong> Voice recognition is handled by your browser and may use its online speech service. ReadTheRoom receives only the resulting text and keeps it in ephemeral session memory.</div>
 </div>
 <div class="rtr-intake-status" id="intakeStatus">Ready. This input drives the timer, scale, Default response, and ReadTheRoom response in the live panel beside it.</div>
@@ -128,11 +128,11 @@
 <section aria-label="15-minute calibration timeline" class="rtr-tight-panel rtr-tight-calibration" data-arrange-id="live-calibration-rail" id="calibrationTimeline">
 
 <div class="rtr-quick-proof-banner" id="quickProofBanner">
-<div><span>Quick proof</span><strong>One prompt → one calibration choice → visible result</strong></div>
+<div><span>Quick comparison</span><strong>One prompt → one calibration choice → visible result</strong></div>
 <button class="rtr-action rtr-action--secondary" id="switchToFullFromPanelBtn" type="button">Open full 15-minute calibration</button>
 </div>
 <div class="rtr-panel-head">
-<div class="rtr-panel-head-copy"><span class="rtr-tight-tag" id="calibrationModeTag">Quick proof · one-prompt mode</span><h2>Calibrate the response, not the user.</h2><div aria-live="polite" class="now" id="calibrationTimerText">0:00 / 15:00 · Intent lane ready.</div></div>
+<div class="rtr-panel-head-copy"><span class="rtr-tight-tag" id="calibrationModeTag">Quick comparison · one-prompt mode</span><h2>Calibrate the response, not the user.</h2><div aria-live="polite" class="now" id="calibrationTimerText">0:00 / 15:00 · Intent lane ready.</div></div>
 </div>
 <div aria-label="15-minute calibration timer" aria-valuemax="900" aria-valuemin="0" aria-valuenow="0" class="rtr-tight-range" id="calibrationTimerRange" role="progressbar"><i></i></div>
 <div class="rtr-tight-steps" id="calibrationTimerSteps">
@@ -205,11 +205,11 @@
 <div class="rtr-tutorial-step"><small>01</small><b>Speak once, type, or edit the sample.</b><span>MAYA offers a starting prompt, but users can replace it with their real messy prompt. The box grows like a chat composer.</span></div>
 <div class="rtr-tutorial-step"><small>02</small><b>MAYA asks calibration questions.</b><span>She asks what tone, boundary, and memory behavior the user wants before changing anything.</span></div>
 <div class="rtr-tutorial-step"><small>03</small><b>Pick simple options.</b><span>Options adjust response style, tool gates, and whether learning is temporary or reviewed for saving.</span></div>
-<div class="rtr-tutorial-step"><small>04</small><b>See the before/after proof.</b><span>The page shows generic vs calibrated response, an illustrative Behavior Match score, and an exportable local receipt.</span></div>
+<div class="rtr-tutorial-step"><small>04</small><b>Compare the example responses.</b><span>The page shows generic vs calibrated response, an illustrative Behavior Match score, and an exportable local receipt.</span></div>
 </div>
 </section>
 <section aria-label="ReadTheRoom public proof stack" class="rtr-tight-panel rtr-launch-card rtr-after-cockpit-proof" data-arrange-id="public-proof-panel" id="publicProofPanel">
-<span class="rtr-launch-label">Public proof · simple mode</span>
+<span class="rtr-launch-label">Example comparison · simple mode</span>
 <h2>See the difference before you save anything.</h2>
 <p>ReadTheRoom keeps the original prompt, the generic response, the calibrated response, and the action boundary together so the example comparison is visible.</p>
 <div aria-label="ReadTheRoom simple proof flow" class="rtr-proof-flow">
