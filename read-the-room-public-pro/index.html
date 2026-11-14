@@ -24,21 +24,21 @@
 <div class="rtr-tight-kicker">READTHEROOM / INTERACTIVE PREVIEW</div>
 <h1 id="rtrPublicHeadline">Read the moment.<em>Then respond.</em></h1>
 <p class="rtr-tight-lead">Less explaining yourself. More getting somewhere. Explore how tone, brevity, and boundaries can shape a response. Start with a situation, make a few choices, and compare the examples.</p><div aria-label="Choose calibration depth" class="rtr-mode-switch-wrap">
-<div aria-label="Calibration mode" class="rtr-mode-switch" role="tablist">
-<button aria-selected="true" class="is-active rtr-toggle__option rtr-option-card" id="quickProofModeBtn" role="tab" tabindex="0" type="button">
+<div aria-label="Calibration mode" class="rtr-mode-switch" role="radiogroup">
+<button aria-checked="true" class="is-active rtr-toggle__option rtr-option-card" id="quickProofModeBtn" role="radio" tabindex="0" type="button">
 <span>Quick comparison</span><small>About 60 seconds</small>
 </button>
-<button aria-selected="false" class="rtr-toggle__option rtr-option-card" id="fullCalibrationModeBtn" role="tab" tabindex="-1" type="button">
+<button aria-checked="false" class="rtr-toggle__option rtr-option-card" id="fullCalibrationModeBtn" role="radio" tabindex="-1" type="button">
 <span>Guided calibration</span><small>About 15 minutes</small>
 </button>
 </div>
-<p class="rtr-mode-note" id="calibrationModeNote">One prompt, one preference, one visible before/after. Nothing is saved without review.</p>
+<p class="rtr-mode-note" id="calibrationModeNote">One prompt, one preference, one visible before/after. Profile changes require review.</p>
 </div>
 <div class="rtr-tight-actions"><button class="rtr-tight-btn rtr-primary-action rtr-action rtr-action--primary" data-magnetic="true" id="startCalibrationBtn" type="button">Try a conversation</button><button class="rtr-tight-btn secondary rtr-action rtr-action--secondary" id="seeProofBtn" type="button">Compare responses</button><button aria-controls="technicalProofPanel" aria-expanded="false" class="rtr-tight-btn secondary rtr-technical-link rtr-text-action rtr-action rtr-action--quiet" id="technicalInlineBtn" type="button">Technical details</button></div>
 <div aria-label="ReadTheRoom live status strip" class="rtr-tight-status rtr-status-inline">
-<span><strong>Private session</strong> Processed only for this session, not retained to disk</span>
+<span><strong>Session storage</strong> Session data is held in server memory; your browser stores a session ID and mode, and exports save files you choose.</span>
 <span><strong>Review before saving</strong> Preferences stay yours to inspect</span>
-<span><strong>Action stays gated</strong> Tools remain held until the user asks</span>
+<span><strong>Example boundary</strong> This comparison illustrates a held action; it is not a live tool-gate test.</span>
 </div>
 </div>
 <aside aria-label="Illustrative response comparison" class="rtr-tight-side rtr-public-proof-stage" data-arrange-id="hero-proof">
@@ -53,7 +53,7 @@
 </div>
 </div>
 <div class="rtr-example-prompt"><span>The situation</span><p>“I’m frustrated this keeps breaking. Help me fix it without taking over.”</p></div>
-<div aria-label="Interactive response comparison" class="rtr-response-lens" data-view="calibrated" id="responseContextLens" tabindex="0">
+<div aria-label="Interactive response comparison" class="rtr-response-lens" data-view="calibrated" id="responseContextLens">
 <div aria-hidden="true" class="rtr-lens-glow"></div>
 <div aria-hidden="true" aria-labelledby="proofDefaultViewBtn" class="rtr-response-view is-default" data-proof-panel="default" id="heroDefaultPanel" role="tabpanel">
 <small>Before · generic example</small>
@@ -78,7 +78,7 @@
 </ul>
 </div>
 <div class="rtr-action-boundary">
-<span>Action boundary</span>
+<span>Example action boundary</span>
 <strong><i></i>No tool action requested</strong>
 <p>Nothing was sent, changed, saved, or executed.</p>
 </div>
@@ -86,7 +86,7 @@
 <p class="rtr-demo-disclosure">Illustrative demo: responses and scores use preset rules. They are not evidence of model training, learning, or measured performance.</p>
 <div class="rtr-public-proof-footer">
 <div><span>Illustrative match</span><strong>42 → 74</strong></div>
-<div><span>Tool action</span><strong>Held</strong></div>
+<div><span>Example tool action</span><strong>Held</strong></div>
 <div><span>Profile write</span><strong>Review first</strong></div>
 </div>
 </aside>
@@ -221,13 +221,13 @@
 </div>
 <div aria-label="ReadTheRoom proof metrics" class="rtr-proof-metrics">
 <div class="rtr-proof-item good"><small>Behavior Match · illustration</small><b id="proofBehaviorMatchText">42 → 74</b></div>
-<div class="rtr-proof-item good"><small>Tool Boundary</small><b>Held</b></div>
+<div class="rtr-proof-item good"><small>Example tool boundary</small><b>Held</b></div>
 <div class="rtr-proof-item"><small>Profile Writes</small><b>Review first</b></div>
 </div>
 <p>Behavior Match is an illustrative preset-value heuristic, not measured learning or performance. This example starts at 42 → 74; the final walkthrough display uses a minimum of 74 and may differ from the session receipt.</p>
 <div aria-label="Compact ReadTheRoom receipt preview" class="rtr-receipt-preview">
 <div><small>Intent</small><b>Frustration loop</b></div>
-<div><small>Action gate</small><b>No tool action</b></div>
+<div><small>Example action gate</small><b>No tool action</b></div>
 <div><small>Save state</small><b>Review required</b></div>
 <div><small>Export</small><b>Receipt ready</b></div>
 </div>
@@ -244,10 +244,10 @@
 <article class="rtr-tight-card rtr-tight-sandbox" data-arrange-id="summary-sandbox" data-key="sandbox" data-preview=""><span class="rtr-tight-tag">Sandbox mode</span><h3>Temporary behavior tests. Real profile untouched.</h3><p>Users can test tone, humor, and warmth without saving anything to the persistent profile unless they explicitly review and save it.</p><div class="rtr-tight-toggle"><div><b>Sandbox preview is ON</b><p>Temporary only. The answer can be tested without saving to the profile.</p></div><span aria-label="Sandbox preview only, no profile write" class="rtr-sandbox-state">Preview only</span></div><div class="rtr-signal-summary"><div class="rtr-signal-row success"><b>Profile</b><span>Untouched</span></div><div class="rtr-signal-row review"><b>Save</b><span>Review required</span></div></div><p class="rtr-tight-note">Sensitive prompts still override sandbox settings.</p></article>
 <article class="rtr-tight-card" data-arrange-id="summary-local-receipt" data-key="minimal" data-preview=""><span class="rtr-tight-tag">Local receipt</span><h3>What changed, why it changed, and what stayed local.</h3><p>The proof should feel like a receipt, not a settings page. Clear outcome first, technical details second.</p><div aria-label="ReadTheRoom receipt metrics" class="rtr-proof-metrics compact"><div class="rtr-proof-item good"><small>Example match</small><b>74</b></div><div class="rtr-proof-item good"><small>Gate</small><b>Held</b></div><div class="rtr-proof-item"><small>Writes</small><b>Review</b></div></div><ul class="rtr-proof-list compact-list"><li><i>✓</i><span>Generic response stayed visible for comparison.</span></li><li><i>✓</i><span>Profile write required review.</span></li><li><i>✓</i><span>Receipt can export locally.</span></li></ul></article>
 </div>
-<section aria-label="ReadTheRoom technical proof details" class="rtr-technical-proof" data-arrange-id="technical-proof-panel" hidden="" id="technicalProofPanel">
-<div class="rtr-tech-head"><div class="rtr-tech-head-copy"><span class="rtr-tight-tag">Technical proof · developer trace</span><h2>Runtime telemetry, not vibes.</h2><p>Technical mode exposes actual runtime functions: lane and priority, context economy, profile resolver, tool-suggestion policy, response-quality flags, and the public-safe receipt shape.</p></div><button aria-controls="technicalProofPanel" aria-expanded="true" class="rtr-tech-collapse rtr-action rtr-action--quiet" id="technicalCollapseBtn" type="button">Collapse technical proof ↑</button></div>
+<section aria-label="ReadTheRoom technical example details" class="rtr-technical-proof" data-arrange-id="technical-proof-panel" hidden="" id="technicalProofPanel">
+<div class="rtr-tech-head"><div class="rtr-tech-head-copy"><span class="rtr-tight-tag">Technical illustration · sample trace</span><h2>Example of a possible response path.</h2><p>This static example illustrates proposed control points and a receipt shape. It is not live runtime telemetry or proof that a tool action was gated.</p></div><button aria-controls="technicalProofPanel" aria-expanded="true" class="rtr-tech-collapse rtr-action rtr-action--quiet" id="technicalCollapseBtn" type="button">Collapse technical details ↑</button></div>
 <div class="rtr-tech-layout">
-<div class="rtr-tech-signal-map"><span class="rtr-tight-tag">Runtime trace · sample</span><h3>Prompt → classifier → profile resolver → tool gate → shaped answer</h3><p>This is the developer-facing proof layer. The public flow stays readable, but opening technical proof shows the actual control points a runtime engineer cares about.</p><div aria-label="ReadTheRoom technical trace stats" class="rtr-tech-stat-grid"><div class="rtr-tech-stat"><small>Lane / priority</small><b>frustration</b><span><code>priority=5</code></span></div><div class="rtr-tech-stat"><small>Quality flags</small><b>generic → clean</b><span>formulaic terms removed</span></div><div class="rtr-tech-stat"><small>Tool policy</small><b>suppressed</b><span>No explicit action trigger</span></div><div class="rtr-tech-stat"><small>Profile write</small><b>false</b><span>review_required</span></div></div><div class="rtr-tech-pipeline"><div class="rtr-tech-node"><small>01 Capture</small><b>Input envelope created</b><span>Voice path or locked sample becomes a normalized prompt payload.</span><code>input.mode=<em>locked_sample</em></code></div><div class="rtr-tech-node"><small>02 Classifier</small><b>Lane + priority resolved</b><span>Frustration, correction, sensitive mode, public/private, execution, or lightweight turn.</span><code>priority=<em>5</em> · classifyReadTheRoomLane()</code></div><div class="rtr-tech-node"><small>03 Profile resolver</small><b>Public-safe fit selected</b><span>Neutral default stays active until a reviewed profile or mirror is accepted.</span><code>hiddenDefault=<em>false</em></code></div><div class="rtr-tech-node"><small>04 Context economy</small><b>Reply budget checked</b><span>Context economy check keeps short prompts from pulling oversized answers.</span><code>analyzeContextEconomySignals() · bloat=<em>within_budget</em></code></div><div class="rtr-tech-node"><small>05 Tool gate</small><b>Action boundary enforced</b><span>Read-only, write, external, financial, destructive, and ambiguous actions are separated before tools run.</span><code>toolSuggestion.label=<em>suppressed</em></code></div><div class="rtr-tech-node"><small>06 Composer</small><b>Answer + receipt emitted</b><span>The response changes, the receipt records why, and public output strips private runtime paths.</span><code>textChanged=<em>true</em></code></div></div><div class="rtr-tech-detail-grid"><div class="rtr-tech-card"><small>Runtime hook</small><b>Single integration choke point</b><span><code>createReadTheRoomRuntime({ policy })</code> applies shaping before profile review and envelope return.</span></div><div class="rtr-tech-card"><small>API surface</small><b>Review-gated calibration session</b><span><code>/api/readtheroom/calibration-session</code> stores progress by session id, not silent profile writes.</span></div><div class="rtr-tech-card"><small>Leak guard</small><b>Public receipt sanitizer</b><span>Public routes strip local paths, private profile names, raw debug directories, and hidden defaults.</span></div><div class="rtr-tech-card"><small>Circuit breaker</small><b>Fallback is explicit</b><span>If profile load or policy compose fails, receipt metadata marks <code>fallbackUsed=true</code> instead of pretending.</span></div></div></div>
+<div class="rtr-tech-signal-map"><span class="rtr-tight-tag">Runtime trace · sample</span><h3>Prompt → classifier → profile resolver → tool gate → shaped answer</h3><p>The static diagram illustrates control points; it does not show a live execution or verify enforcement.</p><div aria-label="ReadTheRoom technical trace stats" class="rtr-tech-stat-grid"><div class="rtr-tech-stat"><small>Lane / priority</small><b>frustration</b><span><code>priority=5</code></span></div><div class="rtr-tech-stat"><small>Quality flags</small><b>generic → clean</b><span>formulaic terms removed</span></div><div class="rtr-tech-stat"><small>Tool policy</small><b>suppressed</b><span>No explicit action trigger</span></div><div class="rtr-tech-stat"><small>Profile write</small><b>false</b><span>review_required</span></div></div><div class="rtr-tech-pipeline"><div class="rtr-tech-node"><small>01 Capture</small><b>Input envelope created</b><span>Voice path or locked sample becomes a normalized prompt payload.</span><code>input.mode=<em>locked_sample</em></code></div><div class="rtr-tech-node"><small>02 Classifier</small><b>Lane + priority resolved</b><span>Frustration, correction, sensitive mode, public/private, execution, or lightweight turn.</span><code>priority=<em>5</em> · classifyReadTheRoomLane()</code></div><div class="rtr-tech-node"><small>03 Profile resolver</small><b>Public-safe fit selected</b><span>Neutral default stays active until a reviewed profile or mirror is accepted.</span><code>hiddenDefault=<em>false</em></code></div><div class="rtr-tech-node"><small>04 Context economy</small><b>Reply budget checked</b><span>Context economy check keeps short prompts from pulling oversized answers.</span><code>analyzeContextEconomySignals() · bloat=<em>within_budget</em></code></div><div class="rtr-tech-node"><small>05 Tool gate</small><b>Example action boundary</b><span>The sample depicts a suppressed tool suggestion; it does not test an actual tool gate.</span><code>toolSuggestion.label=<em>suppressed</em></code></div><div class="rtr-tech-node"><small>06 Composer</small><b>Answer + receipt emitted</b><span>The response changes, the receipt records why, and public output strips private runtime paths.</span><code>textChanged=<em>true</em></code></div></div><div class="rtr-tech-detail-grid"><div class="rtr-tech-card"><small>Runtime hook</small><b>Single integration choke point</b><span><code>createReadTheRoomRuntime({ policy })</code> applies shaping before profile review and envelope return.</span></div><div class="rtr-tech-card"><small>API surface</small><b>Review-gated calibration session</b><span><code>/api/readtheroom/calibration-session</code> stores progress by session id, not silent profile writes.</span></div><div class="rtr-tech-card"><small>Leak guard</small><b>Public receipt sanitizer</b><span>Public routes strip local paths, private profile names, raw debug directories, and hidden defaults.</span></div><div class="rtr-tech-card"><small>Circuit breaker</small><b>Fallback is explicit</b><span>If profile load or policy compose fails, receipt metadata marks <code>fallbackUsed=true</code> instead of pretending.</span></div></div></div>
 <pre aria-label="Sample ReadTheRoom developer trace" class="rtr-tech-code"><b>readtheroom_trace.sample.json</b>
 {
   "runtime": "readTheRoomRuntime",

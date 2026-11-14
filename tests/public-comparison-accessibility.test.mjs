@@ -3,6 +3,16 @@ import { runInNewContext } from 'node:vm';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+test('mode selector exposes radio semantics and the passive lens is not a tab stop', () => {
+  const html = readFileSync('read-the-room-public-pro/index.html', 'utf8');
+  assert.match(html, /aria-label="Calibration mode"[^>]*role="radiogroup"/);
+  assert.match(html, /aria-checked="true"[^>]*id="quickProofModeBtn"[^>]*role="radio"[^>]*tabindex="0"/);
+  assert.match(html, /aria-checked="false"[^>]*id="fullCalibrationModeBtn"[^>]*role="radio"[^>]*tabindex="-1"/);
+  assert.doesNotMatch(html.match(/<div[^>]*id="responseContextLens"[^>]*>/)[0], /tabindex=/);
+  assert.match(html, /This static example illustrates proposed control points/);
+  assert.match(html, /your browser stores a session ID and mode/);
+});
+
 test('comparison tabs expose only the active response and support keyboard navigation', () => {
   let focused = null;
   function element() {
@@ -39,11 +49,14 @@ test('comparison tabs expose only the active response and support keyboard navig
   elements.quickProofModeBtn.listeners.get('keydown')({ key: 'ArrowRight', preventDefault() { modePrevented = true; } });
   assert.equal(modePrevented, true);
   assert.equal(focused, elements.fullCalibrationModeBtn);
-  assert.equal(elements.fullCalibrationModeBtn.attributes.get('aria-selected'), 'true');
+  assert.equal(elements.fullCalibrationModeBtn.attributes.get('aria-checked'), 'true');
   assert.equal(elements.quickProofModeBtn.attributes.get('tabindex'), '-1');
   elements.fullCalibrationModeBtn.listeners.get('keydown')({ key: 'Home', preventDefault() {} });
   assert.equal(focused, elements.quickProofModeBtn);
-  assert.equal(elements.quickProofModeBtn.attributes.get('aria-selected'), 'true');
+  assert.equal(elements.quickProofModeBtn.attributes.get('aria-checked'), 'true');
+  elements.quickProofModeBtn.listeners.get('keydown')({ key: 'ArrowDown', preventDefault() {} });
+  assert.equal(focused, elements.fullCalibrationModeBtn);
+  assert.equal(elements.fullCalibrationModeBtn.attributes.get('aria-checked'), 'true');
   assert.equal(before.attributes.get('aria-selected'), 'false');
   assert.equal(left.attributes.get('aria-hidden'), 'true');
   assert.equal(right.attributes.get('aria-hidden'), 'false');

@@ -23,7 +23,7 @@ const server = serverPaths.map((candidate) => fs.readFileSync(candidate, "utf8")
 assert.match(html, /data-public-pro-version=["']3\.4-final["']/);
 assert.match(html, /Read the moment\.<em>Then respond\.<\/em>/i);
 assert.doesNotMatch(html, /No cloud upload or telemetry/i, 'hosted beta must not imply typed prompts never reach its server');
-assert.match(html, /Processed only for this session/i);
+assert.match(html, /Session data is held in server memory; your browser stores a session ID and mode/i);
 assert.match(html, /Voice recognition is handled by your browser and may use its online speech service/i, 'voice processing disclosure must name the browser-provider boundary');
 assert.match(html, /ReadTheRoom receives only the resulting text and keeps it in ephemeral session memory/i, 'voice disclosure must describe what the app receives and retains');
 assert.doesNotMatch(css, /font(?:-size)?\s*:[^;{}]*\b9px\b/i, 'public UI must not render nine-pixel labels');

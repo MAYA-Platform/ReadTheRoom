@@ -695,15 +695,15 @@
     shell.dataset.calibrationMode = quick ? 'quick' : 'full';
     quickBtn?.classList.toggle('is-active', quick);
     fullBtn?.classList.toggle('is-active', !quick);
-    quickBtn?.setAttribute('aria-selected', String(quick));
-    fullBtn?.setAttribute('aria-selected', String(!quick));
+    quickBtn?.setAttribute('aria-checked', String(quick));
+    fullBtn?.setAttribute('aria-checked', String(!quick));
     quickBtn?.setAttribute('tabindex', quick ? '0' : '-1');
     fullBtn?.setAttribute('tabindex', quick ? '-1' : '0');
     if (startBtn) startBtn.textContent = quick ? 'Try a conversation' : 'Start guided calibration';
     if (runBtn) runBtn.textContent = quick ? 'Run comparison' : 'Start calibration session';
     if (modeTag) modeTag.textContent = quick ? 'Quick comparison · one-prompt mode' : '15-minute calibration';
     if (modeNote) modeNote.textContent = quick
-      ? 'One prompt, one preference, one visible before/after. Nothing is saved without review.'
+      ? 'One prompt, one preference, one visible before/after. Profile changes require review.'
       : 'A guided six-stage calibration for intent, tone, correction handling, tool boundaries, and review.';
     try { localStorage.setItem('readtheroom-public-calibration-mode', quick ? 'quick' : 'full'); } catch {}
   };
@@ -712,7 +712,7 @@
   fullBtn?.addEventListener('click', () => setMode('full'));
   for (const button of [quickBtn, fullBtn]) {
     button?.addEventListener('keydown', (event) => {
-      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
       event.preventDefault();
       const quick = event.key === 'Home' || (event.key !== 'End' && button === fullBtn);
       setMode(quick ? 'quick' : 'full');
